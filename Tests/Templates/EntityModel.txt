@@ -22,9 +22,7 @@ namespace {{Namespace}}
         [Required(ErrorMessage = "{{Name.NameWithSpaces}} is required.")]
         {{/boolCond}}
         {{#ifCond Type 'string'}}        
-        {{#ifCond SqlDataType 'nvarchar(max)'}}
         [StringLength({{Length}}, ErrorMessage = "{{Name.NameWithSpaces}} cannot be longer than {{Length}}.")]
-        {{/ifCond}}
         {{/ifCond}}
         public {{Type}} {{Name.Value}} { get; set; }
         {{/NonAuditNonKeyProperties}}

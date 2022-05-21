@@ -43,6 +43,7 @@ namespace Tests.TemplateSetTests
 			//var folders = di.GetDirectories();
 			//Assert.AreEqual(0, folders.Length);
 		}
+
 		[TestMethod]
 		public void RunAllTemplates()
 		{
