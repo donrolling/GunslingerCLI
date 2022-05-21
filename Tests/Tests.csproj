@@ -26,31 +26,31 @@
     <None Update="appSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Input\RunAllTemplatesTests\RunAllBusinessTemplates\GenerationContext.Business.json">
+    <None Update="Input\RunAllTemplatesTests\RunAllBusinessTemplates\gunslinger.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Input\RunAllTemplatesTests\RunAllEntities\GenerationContext.Entities.json">
+    <None Update="Input\RunAllTemplatesTests\RunAllEntities\gunslinger.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Input\RunAllTemplatesTests\RunAllStubs\GenerationContextAllStubs.json">
+    <None Update="Input\RunAllTemplatesTests\RunAllStubs\gunslinger.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Input\RunAllTemplatesTests\RunAllTemplates\GenerationContext.json">
+    <None Update="Input\RunAllTemplatesTests\RunAllTemplates\gunslinger.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Input\RunAllTemplatesTests\RunAllWithExclusions\GenerationContextExclusions.json">
+    <None Update="Input\RunAllTemplatesTests\RunAllWithExclusions\gunslinger.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Input\SwaggerTests\RunAllTemplates\devapi.swagger.petstore.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Input\SwaggerTests\RunAllTemplates\SwaggerConfig.json">
+    <None Update="Input\SwaggerTests\RunAllTemplates\gunslinger.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Input\SwaggerTests\RunAllTemplates_RenameOneFile\devapi.swagger.petstore.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Input\SwaggerTests\RunAllTemplates_RenameOneFile\SwaggerConfig.json">
+    <None Update="Input\SwaggerTests\RunAllTemplates_RenameOneFile\gunslinger.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Templates\BaseRepository.txt">

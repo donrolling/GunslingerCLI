@@ -13,7 +13,7 @@ namespace Tests.TemplateSetTests
         [TestMethod]
         public void RunAllTemplates()
         {
-            var filename = "SwaggerConfig.json";
+            var filename = "gunslinger.json";
             var result = RunGeneratorFromConfig(this, TestContext, filename);
             Assert.IsTrue(result.Success, result.Message);
         }
@@ -21,7 +21,7 @@ namespace Tests.TemplateSetTests
         [TestMethod]
         public void RunAllTemplates_RenameOneFile()
         {
-            var filename = "SwaggerConfig.json";
+            var filename = "gunslinger.json";
             var generatorService = GetService<IGeneratorService>();
             var result = generatorService.Generate(GetCommandSettings(TestContext, filename));
             var template = generatorService.Context.Templates.First();

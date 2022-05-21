@@ -15,7 +15,7 @@ namespace Tests.TemplateSetTests
         [TestMethod]
         public void RunAllBusinessTemplates()
         {
-            var filename = "GenerationContext.Business.json";
+            var filename = "gunslinger.json";
             var result = RunGeneratorFromConfig(this, TestContext, filename);
             Assert.IsTrue(result.Success, result.Message);
         }
@@ -23,7 +23,7 @@ namespace Tests.TemplateSetTests
         [TestMethod]
         public void RunAllEntities()
         {
-            var filename = "GenerationContext.Entities.json";
+            var filename = "gunslinger.json";
             var result = RunGeneratorFromConfig(this, TestContext, filename);
             Assert.IsTrue(result.Success, result.Message);
         }
@@ -31,7 +31,7 @@ namespace Tests.TemplateSetTests
         [TestMethod]
         public void RunAllStubs()
 		{
-			var filename = "GenerationContextAllStubs.json";
+			var filename = "gunslinger.json";
 			var generatorService = GetService<IGeneratorService>();
 			var result = generatorService.Generate(GetCommandSettings(TestContext, filename));
 			Assert.IsTrue(result.Success, result.Message);
@@ -47,7 +47,7 @@ namespace Tests.TemplateSetTests
 		[TestMethod]
 		public void RunAllTemplates()
 		{
-			var filename = "GenerationContext.json";
+			var filename = "gunslinger.json";
 			var result = RunGeneratorFromConfig(this, TestContext, filename);
 			Assert.IsTrue(result.Success, result.Message);
 		}
@@ -55,7 +55,7 @@ namespace Tests.TemplateSetTests
 		[TestMethod]
 		public void RunAllWithExclusions()
 		{
-			var filename = "GenerationContextExclusions.json";
+			var filename = "gunslinger.json";
 			var generatorService = GetService<IGeneratorService>();
 			var result = generatorService.Generate(GetCommandSettings(TestContext, filename));
 			Assert.IsTrue(result.Success, result.Message);
