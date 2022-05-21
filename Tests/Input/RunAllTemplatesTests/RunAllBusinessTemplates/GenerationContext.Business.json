@@ -24,7 +24,7 @@
       "Namespace": "Sample.Business.Services",
       "IsStub": false,
       "InputRelativePath": "BaseService.txt",
-      "OutputRelativePath": "sample.business\\Services\\{entityName}.cs",
+      "OutputRelativePath": "Sample.business\\Services\\{entityName}.cs",
       "Language": "csharp",
 
       "DataProviderName": "SQLModelsDataProvider",

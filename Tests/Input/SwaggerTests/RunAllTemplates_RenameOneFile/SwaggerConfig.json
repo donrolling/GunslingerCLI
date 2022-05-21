@@ -9,15 +9,14 @@
     "Resources": [
     ],
     "DataProviders": [
-        {
-            "Name": "GenesysModelsDataProvider",
-            "TypeName": "SwaggerDataProvider",
-            "UseLocalDataSource": true,
-            "OpenDataSourceUrlInDefaultBrowser": true,
-            "NonSpecifiedPropertiesAreNullable": true,
-            "LocalDataSource": "C:\\Projects\\idi\\idi.utilities\\Gunslinger.Templates\\Tests\\TestData\\genesys-output-05.21.2020.json",
-            "DataSource": "https://tstapi.wrberkley.com/store/api-docs?provider=WRBTS%2Fcdustin-AT-idi.wrbc&name=IDIPolicyAPI&version=1.0.0"
-        }
+      {
+        "Name": "GenesysModelsDataProvider",
+        "TypeName": "SwaggerDataProvider",
+        "UseLocalDataSource": true,
+        "NonSpecifiedPropertiesAreNullable": true,
+        "LocalDataSource": "Tests\\Input\\SwaggerTests\\RunAllTemplates_RenameOneFile\\devapi.swagger.petstore.json",
+        "DataSource": ""
+      }
     ],
     "Templates": [
         {

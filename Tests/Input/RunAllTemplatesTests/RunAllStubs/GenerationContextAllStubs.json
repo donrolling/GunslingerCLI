@@ -21,7 +21,7 @@
     {
       "Type": "Model",
       "Name": "Repository",
-      "Namespace": "sample.Data.Repository",
+      "Namespace": "Sample.Data.Repository",
       "IsStub": true,
       "InputRelativePath": "Repository.txt",
       "OutputRelativePath": "{entityName}DapperRepository.cs",
@@ -29,15 +29,15 @@
 
       "DataProviderName": "SQLModelsDataProvider",
       "Imports": [
-        "sample.Data.Repository.Base",
-        "sample.Data.Interfaces",
+        "Sample.Data.Repository.Base",
+        "Sample.Data.Interfaces",
         "Microsoft.Extensions.Logging"
       ]
     },
     {
       "Type": "Model",
       "Name": "BaseRepository",
-      "Namespace": "sample.Data.Repository.Base",
+      "Namespace": "Sample.Data.Repository.Base",
       "IsStub": true,
       "InputRelativePath": "BaseRepository.txt",
       "OutputRelativePath": "{entityName}DapperRepositoryBase.cs",
@@ -49,7 +49,7 @@
         "Dapper.SQLRepository",
         "Dapper.SQLRepository.Interfaces",
         "Dapper.SQLRepository.Models",
-        "sample.data.Entities",
+        "Sample.data.Entities",
         "Microsoft.Extensions.Logging",
         "System.Threading.Tasks"
       ]
@@ -57,7 +57,7 @@
     {
       "Type": "Model",
       "Name": "RepositoryInterface",
-      "Namespace": "sample.Data.Interfaces",
+      "Namespace": "Sample.Data.Interfaces",
       "IsStub": true,
       "InputRelativePath": "RepositoryInterface.txt",
       "OutputRelativePath": "I{entityName}Repository.cs",
@@ -66,7 +66,7 @@
       "DataProviderName": "SQLModelsDataProvider",
       "Imports": [
         "Dapper.SQLRepository.Interfaces",
-        "sample.data.Entities"
+        "Sample.data.Entities"
       ]
     }
   ]

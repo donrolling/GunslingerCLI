@@ -27,10 +27,10 @@
     {
       "Type": "Model",
       "Name": "EntityModels",
-      "Namespace": "sample.data.Entities",
+      "Namespace": "Sample.Data.Entities",
       "IsStub": false,
       "InputRelativePath": "EntityModel.txt",
-      "OutputRelativePath": "sample.data\\Entities\\{entityName}.cs",
+      "OutputRelativePath": "Sample.Data\\Entities\\{entityName}.cs",
       "Language": "csharp",
       "DataProviderName": "SQLModelsDataProvider",
       "Imports": [

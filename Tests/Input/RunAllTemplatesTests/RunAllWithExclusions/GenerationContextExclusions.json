@@ -21,7 +21,7 @@
     {
       "Type": "Model",
       "Name": "Repository",
-      "Namespace": "sample.Data.Repository",
+      "Namespace": "Sample.Data.Repository",
       "ExcludeTheseTypes": [ "Address" ],
       "IsStub": false,
       "InputRelativePath": "Repository.txt",
@@ -29,8 +29,8 @@
       "Language": "csharp",
       "DataProviderName": "SQLModelsDataProvider",
       "Imports": [
-        "sample.Data.Repository.Base",
-        "sample.Data.Interfaces",
+        "Sample.Data.Repository.Base",
+        "Sample.Data.Interfaces",
         "Microsoft.Extensions.Logging"
       ]
     }

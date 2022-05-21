@@ -13,10 +13,10 @@
     {
       "Name": "ModelsDataProvider",
       "TypeName": "SwaggerDataProvider",
-      "UseLocalDataSource": false,
+      "UseLocalDataSource": true,
       "NonSpecifiedPropertiesAreNullable": true,
-      "LocalDataSource": "C:\\Projects\\_CodeGeneration\\TestData\\devapi.swagger.petstore.json",
-      "DataSource": "https://tstapi.wrberkley.com/store/api-docs?provider=WRBTS%2Fcdustin-AT-idi.wrbc&name=IDIPolicyAPI&version=1.0.0"
+      "LocalDataSource": "Tests\\Input\\SwaggerTests\\RunAllTemplates\\devapi.swagger.petstore.json",
+      "DataSource": ""
     }
   ],
   "Templates": [

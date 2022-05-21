@@ -12,7 +12,7 @@
       "TypeName": "SwaggerDataProvider",
       "UseLocalDataSource": true,
       "NonSpecifiedPropertiesAreNullable": true,
-      "LocalDataSource": "Tests\\Input\\LocalDataSourceTests\\RunAllTemplates\\devapi.swagger.petstore.json",
+      "LocalDataSource": "Tests\\Input\\SwaggerTests\\RunAllTemplates\\devapi.swagger.petstore.json",
       "DataSource": ""
     }
   ],
