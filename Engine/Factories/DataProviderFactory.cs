@@ -41,13 +41,7 @@ namespace Gunslinger.Factories
             switch (generalSettings.TypeName)
             {
                 case "SwaggerDataProvider":
-                    var swaggerDataProviderSettings = JsonConvert.DeserializeObject<SwaggerDataProviderSettings>(allSettings);
-                    if (swaggerDataProviderSettings.OpenDataSourceUrlInDefaultBrowser)
-                    {
-                        openDataSourceInBrowser(swaggerDataProviderSettings.DataSource);
-                        // wait for the browser to load the file
-                        Thread.Sleep(TimeSpan.FromSeconds(10));
-                    }
+                    var swaggerDataProviderSettings = JsonConvert.DeserializeObject<SwaggerDataProviderSettings>(allSettings);                    
                     var swaggerDataProvider = new SwaggerDataProvider(swaggerDataProviderSettings, this._loggerFactory);
                     _dataProviderDictionary.Add(swaggerDataProviderSettings.Name, swaggerDataProvider);
                     return swaggerDataProvider;
