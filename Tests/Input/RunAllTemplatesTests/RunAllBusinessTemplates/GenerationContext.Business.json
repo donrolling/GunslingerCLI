@@ -1,0 +1,45 @@
+{
+  "OutputDirectory": "SampleProject",
+  "ProcessTemplateStubs": false,
+  "TemplateDirectory": "Templates",
+  "ExcludeTheseEntities": [ "Item" ],
+  "ExcludeTheseTemplates": [],
+  "IncludeTheseEntitiesOnly": [],
+  "IncludeTheseTemplatesOnly": [],
+  "Resources": [
+  ],
+  "DataProviders": [
+    {
+      "Name": "SQLModelsDataProvider",
+      "TypeName": "SQLModelDataProvider",
+      "UseLocalDataSource": false,
+      "LocalDataSource": "",
+      "DataSource": "Server=localhost,1433;Database=Sample;User Id=sa;Password=yourStrong(!)Password;"
+    }
+  ],
+  "Templates": [
+    {
+      "Type": "Model",
+      "Name": "BaseService",
+      "Namespace": "Sample.Business.Services",
+      "IsStub": false,
+      "InputRelativePath": "BaseService.txt",
+      "OutputRelativePath": "sample.business\\Services\\{entityName}.cs",
+      "Language": "csharp",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": [
+        "Business.Interfaces",
+        "Business.Services.EntityServices.Base",
+        "Common.Transactions",
+        "Data.Dapper.Models",
+        "Data.Repository.Interfaces",
+        "Microsoft.Extensions.Logging",
+        "Models.Base",
+        "Models.Entities",
+        "Models.Interfaces",
+        "System.Threading.Tasks"
+      ]
+    }
+  ]
+}

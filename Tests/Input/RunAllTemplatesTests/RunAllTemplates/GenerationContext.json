@@ -1,0 +1,172 @@
+{
+  "OutputDirectory": "SampleProject",
+  "ProcessTemplateStubs": false,
+  "TemplateDirectory": "Templates",
+  "ExcludeTheseEntities": [ "Item" ],
+  "ExcludeTheseTemplates": [],
+  "IncludeTheseEntitiesOnly": [],
+  "IncludeTheseTemplatesOnly": [],
+  "Resources": [
+  ],
+  "DataProviders": [
+    {
+      "Name": "SQLModelsDataProvider",
+      "TypeName": "SQLModelDataProvider",
+      "UseLocalDataSource": false,
+      "LocalDataSource": "",
+      "DataSource": "Server=localhost,1433;Database=Sample;User Id=sa;Password=yourStrong(!)Password;"
+    },
+    {
+      "Name": "SQLDatabaseDataProvider",
+      "TypeName": "SQLDatabaseDataProvider",
+      "UseLocalDataSource": false,
+      "LocalDataSource": "",
+      "DataSource": "Server=localhost,1433;Database=Sample;User Id=sa;Password=yourStrong(!)Password;"
+    }
+  ],
+  "Templates": [
+    {
+      "Type": "Model",
+      "Name": "EntityModels",
+      "Namespace": "sample.data.Entities",
+      "IsStub": false,
+      "InputRelativePath": "EntityModel.txt",
+      "OutputRelativePath": "sample.data\\Entities\\{entityName}.cs",
+      "Language": "csharp",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": [
+        "Dapper.SQLRepository.Models.Base",
+        "System",
+        "System.Collections.Generic"
+      ]
+    },
+    {
+      "Type": "Model",
+      "Name": "Repository",
+      "Namespace": "sample.Data.Repository",
+      "IsStub": false,
+      "InputRelativePath": "Repository.txt",
+      "OutputRelativePath": "sample.data\\Repository\\Dapper\\{entityName}DapperRepository.cs",
+      "Language": "csharp",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": [
+        "sample.Data.Repository.Base",
+        "sample.Data.Interfaces",
+        "Microsoft.Extensions.Logging"
+      ]
+    },
+    {
+      "Type": "Model",
+      "Name": "BaseRepository",
+      "Namespace": "sample.Data.Repository.Base",
+      "IsStub": false,
+      "InputRelativePath": "BaseRepository.txt",
+      "OutputRelativePath": "sample.data\\Repository\\Dapper\\Base\\{entityName}DapperRepositoryBase.cs",
+      "Language": "csharp",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": [
+        "Dapper",
+        "Dapper.SQLRepository",
+        "Dapper.SQLRepository.Interfaces",
+        "Dapper.SQLRepository.Models",
+        "sample.data.Entities",
+        "Microsoft.Extensions.Logging",
+        "System.Threading.Tasks",
+        "System.Data"
+      ]
+    },
+    {
+      "Type": "Model",
+      "Name": "RepositoryInterface",
+      "Namespace": "sample.Data.Interfaces",
+      "IsStub": false,
+      "InputRelativePath": "RepositoryInterface.txt",
+      "OutputRelativePath": "sample.data\\Repository\\Interfaces\\I{entityName}Repository.cs",
+      "Language": "csharp",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": [
+        "Dapper.SQLRepository.Interfaces",
+        "sample.data.Entities"
+      ]
+    },
+    {
+      "Type": "Model",
+      "Name": "RepositoryTest",
+      "Namespace": "sample.Test.DataAccess",
+      "IsStub": false,
+      "InputRelativePath": "DataAccessTest.txt",
+      "OutputRelativePath": "sample.test\\DataAccess\\{entityName}_CRUD_Test.cs",
+      "Language": "csharp",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": [
+        "AutoFixture",
+        "sample.data.Entities",
+        "sample.Data.Interfaces",
+        "sample.test.Base",
+        "sample.test.Utility",
+        "Microsoft.Extensions.DependencyInjection",
+        "Microsoft.VisualStudio.TestTools.UnitTesting",
+        "System.Collections.Generic",
+        "System.Threading.Tasks"
+      ]
+    },
+    {
+      "Type": "Model",
+      "Name": "InsertProcedure",
+      "Namespace": "",
+      "IsStub": false,
+      "InputRelativePath": "InsertProcedure.txt",
+      "OutputRelativePath": "sample.database\\{schema}\\Stored Procedures\\{entityName}_Insert.sql",
+      "Language": "sql",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": []
+    },
+    {
+      "Type": "Model",
+      "Name": "UpdateProcedure",
+      "Namespace": "",
+      "IsStub": false,
+      "InputRelativePath": "UpdateProcedure.txt",
+      "OutputRelativePath": "sample.database\\{schema}\\Stored Procedures\\{entityName}_Update.sql",
+      "Language": "sql",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": []
+    },
+    {
+      "Type": "Model",
+      "Name": "DeleteProcedure",
+      "Namespace": "",
+      "IsStub": false,
+      "InputRelativePath": "DeleteProcedure.txt",
+      "OutputRelativePath": "sample.database\\{schema}\\Stored Procedures\\{entityName}_Delete.sql",
+      "Language": "sql",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": []
+    },
+    {
+      "Type": "Setup",
+      "Name": "DataAccessTestInjectionWireUp",
+      "Namespace": "sample.test.Injection",
+      "IsStub": false,
+      "InputRelativePath": "DataAccessTestInjectionWireUp.txt",
+      "OutputRelativePath": "sample.test\\Injection\\DataAccess.cs",
+      "Language": "sql",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": [
+        "sample.Data.Repository",
+        "sample.Data.Interfaces",
+        "Microsoft.Extensions.DependencyInjection",
+        "Microsoft.Extensions.Logging"
+      ]
+    }
+  ]
+}

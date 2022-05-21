@@ -1,0 +1,19 @@
+﻿{{#Imports}}
+using {{.}};
+{{/Imports}}
+
+namespace {{Namespace}} {
+    public class {{Name.Value}} : BaseEntity<{{Key.DataType}}> {
+		#region ForeignKeys
+		{{#ForeignKeys}}
+        public IEnumerable<{{Source.Table}}> {{Source.TablePlural}} { get; set; }
+		{{/ForeignKeys}}
+		#endregion ForeignKeys
+
+		#region NonKeyProperties
+        {{#NonKeyProperties}}
+        public {{Type}} {{Name.Value}} { get; set; }
+        {{/NonKeyProperties}}
+		#endregion NonKeyProperties
+    }
+}

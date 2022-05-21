@@ -1,0 +1,15 @@
+﻿{{#Imports}}
+using {{.}};
+{{/Imports}}
+
+namespace {{Namespace}} {
+    public static class DataAccess
+    {
+        public static void AddServices(string connectionString, ILoggerFactory loggerFactory, ServiceCollection services)
+        {
+		{{#Models}}
+            services.AddTransient<I{{Name.Value}}Repository, {{Name.Value}}DapperRepository>(a => new {{Name.Value}}DapperRepository(connectionString, loggerFactory));
+		{{/Models}}
+        }
+    }
+}

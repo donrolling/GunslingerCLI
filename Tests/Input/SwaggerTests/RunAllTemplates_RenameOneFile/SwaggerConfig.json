@@ -1,0 +1,49 @@
+{
+    "OutputDirectory": "C:\\Projects\\idi\\idi.utilities\\Gunslinger.Templates\\Output",
+    "ProcessTemplateStubs": false,
+    "TemplateDirectory": "Templates",
+    "ExcludeTheseEntities": [],
+    "ExcludeTheseTemplates": [],
+    "IncludeTheseEntitiesOnly": [],
+    "IncludeTheseTemplatesOnly": [],
+    "Resources": [
+    ],
+    "DataProviders": [
+        {
+            "Name": "GenesysModelsDataProvider",
+            "TypeName": "SwaggerDataProvider",
+            "UseLocalDataSource": true,
+            "OpenDataSourceUrlInDefaultBrowser": true,
+            "NonSpecifiedPropertiesAreNullable": true,
+            "LocalDataSource": "C:\\Projects\\idi\\idi.utilities\\Gunslinger.Templates\\Tests\\TestData\\genesys-output-05.21.2020.json",
+            "DataSource": "https://tstapi.wrberkley.com/store/api-docs?provider=WRBTS%2Fcdustin-AT-idi.wrbc&name=IDIPolicyAPI&version=1.0.0"
+        }
+    ],
+    "Templates": [
+        {
+            "Type": "Model",
+            "Name": "GenesysModels",
+            "Namespace": "Idi.Marketplace.Bts.Genesys.Entities",
+            "DeleteAllItemsInOutputDirectory": true,
+            "IsStub": false,
+            "InputRelativePath": "SwaggerModel.txt",
+            "OutputRelativePath": "\\{entityName}.cs",
+            "Language": "csharp",
+            
+            "DataProviderName": "GenesysModelsDataProvider",
+            "Imports": [
+                "System.Runtime.Serialization",
+                "System.Text",
+                "Newtonsoft.Json"
+            ],
+            "FileRename": [
+                {
+                    "Source": "Item.cs",
+                    "Destination": "PolicyEntityGraph.cs",
+                    "ClassRenameValue": "public class Item",
+                    "ClassReplaceValue": "public class PolicyEntityGraph"
+                }
+            ]
+        }
+    ]
+}

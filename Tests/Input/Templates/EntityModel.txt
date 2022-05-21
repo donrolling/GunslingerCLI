@@ -1,0 +1,42 @@
+﻿// Code Generation Warning
+// This file is generated and should not be modified because it will be overwritten any time code generation occurs.
+{{#Imports}}
+using {{.}};
+{{/Imports}}
+
+namespace {{Namespace}}
+{
+    public class {{Name.Value}}
+    {
+        {{#KeyProperties}}
+        [Key]
+        public {{Type}} {{Name.Value}} { get; set; }
+        {{/KeyProperties}}
+        {{#ForeignKeys}}
+        // Foreign Key related to {{Source.Table.Value}}.{{Source.Name.Value}}
+        public {{Reference.DataType}} {{Reference.Name.Value}} { get; set; }
+        {{/ForeignKeys}}
+        
+        {{#NonAuditNonKeyProperties}}
+        {{#boolCond Nullable}}
+        [Required(ErrorMessage = "{{Name.NameWithSpaces}} is required.")]
+        {{/boolCond}}
+        {{#ifCond Type 'string'}}        
+        {{#ifCond SqlDataType 'nvarchar(max)'}}
+        [StringLength({{Length}}, ErrorMessage = "{{Name.NameWithSpaces}} cannot be longer than {{Length}}.")]
+        {{/ifCond}}
+        {{/ifCond}}
+        public {{Type}} {{Name.Value}} { get; set; }
+        {{/NonAuditNonKeyProperties}}
+
+        {{#AuditNonKeyProperties}}
+        {{#boolCond Nullable}}
+        [Required(ErrorMessage = "{{Name.NameWithSpaces}} is required.")]
+        {{/boolCond}}
+        {{#ifCond Type 'string'}}
+        [StringLength({{Length}}, ErrorMessage = "{{Name.NameWithSpaces}} cannot be longer than {{Length}}.")]
+        {{/ifCond}}
+        public {{Type}} {{Name.Value}} { get; set; }
+        {{/AuditNonKeyProperties}}
+    }
+}

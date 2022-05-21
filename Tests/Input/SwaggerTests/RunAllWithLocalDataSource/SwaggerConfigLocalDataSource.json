@@ -1,0 +1,36 @@
+{
+  "ProcessTemplateStubs": false,
+  "TemplateDirectory": "Templates",
+  "ExcludeTheseEntities": [],
+  "ExcludeTheseTemplates": [],
+  "IncludeTheseEntitiesOnly": [],
+  "IncludeTheseTemplatesOnly": [],
+  "Resources": [],
+  "DataProviders": [
+    {
+      "Name": "ModelsDataProvider",
+      "TypeName": "SwaggerDataProvider",
+      "UseLocalDataSource": true,
+      "NonSpecifiedPropertiesAreNullable": true,
+      "LocalDataSource": "Tests\\Input\\LocalDataSourceTests\\RunAllTemplates\\devapi.swagger.petstore.json",
+      "DataSource": ""
+    }
+  ],
+  "Templates": [
+    {
+      "Type": "Model",
+      "Name": "Models",
+      "Namespace": "Entities",
+      "IsStub": false,
+      "InputRelativePath": "SwaggerModel.txt",
+      "OutputRelativePath": "\\{entityName}.cs",
+      "Language": "csharp",
+      "DataProviderName": "ModelsDataProvider",
+      "Imports": [
+        "System.Runtime.Serialization",
+        "System.Text",
+        "Newtonsoft.Json"
+      ]
+    }
+  ]
+}

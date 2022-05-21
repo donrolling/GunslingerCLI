@@ -1,0 +1,18 @@
+﻿CREATE PROCEDURE [{{Schema}}].[{{Name.Value}}_Insert] (
+{{#each NonKeyProperties}}
+	{{#unless @first}},{{/unless}} @{{Name.LowerCamelCase}} {{SqlDataType}}
+{{/each}}
+	, @{{Key.Name.LowerCamelCase}} {{Key.SQLDataType}} OUTPUT
+) AS
+	INSERT INTO [{{Schema}}].[{{Name.Value}}] (
+	{{#each NonKeyProperties}}
+	  {{#unless @first}},{{/unless}} [{{Name.Value}}]
+	{{/each}}
+	)
+	VALUES (
+	{{#each NonKeyProperties}}
+	  {{#unless @first}},{{/unless}} @{{Name.LowerCamelCase}}
+	{{/each}}
+	)
+	
+	set @{{Key.Name.LowerCamelCase}} = Scope_Identity()

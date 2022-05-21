@@ -1,0 +1,68 @@
+﻿namespace {{Namespace}} 
+{
+    {{#Imports}}
+    using {{.}};
+    {{/Imports}}
+    
+    [Table("{{Name.Value}}")]
+    public partial class {{Name.Value}} 
+    {
+        public {{Name.Value}}() { }
+
+        {{#KeyProperties}}
+        {{#boolCond IsNullable}}
+        {{else}}
+        [Required]
+        {{/boolCond}}
+        {{#ifCond Type 'string'}}
+        {{#ifCond SqlDataType 'nvarchar(max)'}}
+        {{else}}
+        {{#ifCond SqlDataType 'varchar(max)'}}
+        {{else}}
+        [StringLength({{Length}}]
+        {{/ifCond}}
+        {{/ifCond}}
+        {{/ifCond}}
+        public {{Type}} {{Name.Value}} { get; set; }
+        
+        {{/KeyProperties}}
+        {{#ForeignKeys}}
+        {{#boolCond IsNullable}}
+        {{else}}
+        [Required]
+        {{/boolCond}}
+        {{#ifCond Reference.DataType 'string'}}
+        {{#ifCond Reference.SqlDataType 'nvarchar(max)'}}
+        {{else}}
+        {{#ifCond Reference.SqlDataType 'varchar(max)'}}
+        {{else}}
+        [StringLength({{Length}}]
+        {{/ifCond}}
+        {{/ifCond}}
+        {{/ifCond}}
+        public {{Reference.DataType}} {{Reference.Name.Value}} { get; set; }
+
+        {{/ForeignKeys}}        
+        {{#NonAuditNonKeyProperties}}
+        {{#boolCond IsNullable}}
+        {{else}}
+        [Required]
+        {{/boolCond}}
+        {{#ifCond Type 'string'}}
+        {{#ifCond SqlDataType 'nvarchar(max)'}}
+        {{else}}
+        {{#ifCond SqlDataType 'varchar(max)'}}
+        {{else}}
+        [StringLength({{Length}})]
+        {{/ifCond}}
+        {{/ifCond}}
+        {{/ifCond}}
+        public {{Type}} {{Name.Value}} { get; set; }
+
+        {{/NonAuditNonKeyProperties}}
+        {{#ForeignKeys}}
+        public virtual {{Source.Table.Value}} {{Source.Table.Value}} { get; set; }
+
+        {{/ForeignKeys}}
+    }
+}

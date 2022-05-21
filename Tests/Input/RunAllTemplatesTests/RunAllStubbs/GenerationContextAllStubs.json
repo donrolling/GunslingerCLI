@@ -1,0 +1,73 @@
+{
+  "OutputDirectory": "Output\\Stubs",
+  "ProcessTemplateStubs": false,
+  "TemplateDirectory": "Templates",
+  "ExcludeTheseEntities": [ "Item" ],
+  "ExcludeTheseTemplates": [],
+  "IncludeTheseEntitiesOnly": [],
+  "IncludeTheseTemplatesOnly": [],
+  "Resources": [
+  ],
+  "DataProviders": [
+    {
+      "Name": "SQLModelsDataProvider",
+      "TypeName": "SQLModelDataProvider",
+      "UseLocalDataSource": false,
+      "LocalDataSource": "",
+      "DataSource": "Server=localhost,1433;Database=Sample;User Id=sa;Password=yourStrong(!)Password;"
+    }
+  ],
+  "Templates": [
+    {
+      "Type": "Model",
+      "Name": "Repository",
+      "Namespace": "sample.Data.Repository",
+      "IsStub": true,
+      "InputRelativePath": "Repository.txt",
+      "OutputRelativePath": "{entityName}DapperRepository.cs",
+      "Language": "csharp",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": [
+        "sample.Data.Repository.Base",
+        "sample.Data.Interfaces",
+        "Microsoft.Extensions.Logging"
+      ]
+    },
+    {
+      "Type": "Model",
+      "Name": "BaseRepository",
+      "Namespace": "sample.Data.Repository.Base",
+      "IsStub": true,
+      "InputRelativePath": "BaseRepository.txt",
+      "OutputRelativePath": "{entityName}DapperRepositoryBase.cs",
+      "Language": "csharp",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": [
+        "Dapper",
+        "Dapper.SQLRepository",
+        "Dapper.SQLRepository.Interfaces",
+        "Dapper.SQLRepository.Models",
+        "sample.data.Entities",
+        "Microsoft.Extensions.Logging",
+        "System.Threading.Tasks"
+      ]
+    },
+    {
+      "Type": "Model",
+      "Name": "RepositoryInterface",
+      "Namespace": "sample.Data.Interfaces",
+      "IsStub": true,
+      "InputRelativePath": "RepositoryInterface.txt",
+      "OutputRelativePath": "I{entityName}Repository.cs",
+      "Language": "csharp",
+
+      "DataProviderName": "SQLModelsDataProvider",
+      "Imports": [
+        "Dapper.SQLRepository.Interfaces",
+        "sample.data.Entities"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "OutputDirectory": "C:\\Projects\\idi\\idi.utilities\\Gunslinger.Templates\\Output",
+  "ProcessTemplateStubs": false,
+  "TemplateDirectory": "Templates",
+  "ExcludeTheseEntities": [
+  ],
+  "ExcludeTheseTemplates": [],
+  "IncludeTheseEntitiesOnly": [],
+  "IncludeTheseTemplatesOnly": [],
+  "Resources": [
+  ],
+  "DataProviders": [
+    {
+      "Name": "ModelsDataProvider",
+      "TypeName": "SwaggerDataProvider",
+      "UseLocalDataSource": false,
+      "NonSpecifiedPropertiesAreNullable": true,
+      "LocalDataSource": "C:\\Projects\\_CodeGeneration\\TestData\\devapi.swagger.petstore.json",
+      "DataSource": "https://tstapi.wrberkley.com/store/api-docs?provider=WRBTS%2Fcdustin-AT-idi.wrbc&name=IDIPolicyAPI&version=1.0.0"
+    }
+  ],
+  "Templates": [
+    {
+      "Type": "Model",
+      "Name": "Models",
+      "Namespace": "Idi.Marketplace.Bts..Entities",
+      "IsStub": false,
+      "InputRelativePath": "SwaggerModel.txt",
+      "OutputRelativePath": "\\{entityName}.cs",
+      "Language": "csharp",
+      "DataProviderName": "ModelsDataProvider",
+      "Imports": [
+        "System.Runtime.Serialization",
+        "System.Text",
+        "Newtonsoft.Json"
+      ]
+    }
+  ]
+}

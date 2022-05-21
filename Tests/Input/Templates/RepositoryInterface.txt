@@ -1,0 +1,8 @@
+﻿{{#Imports}}
+using {{.}};
+{{/Imports}}
+
+namespace {{Namespace}} 
+{
+	public interface I{{Name.Value}}Repository : IEntityDapperRepository<{{Name.Value}}, {{Key.DataType}}> { }
+}

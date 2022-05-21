@@ -1,0 +1,108 @@
+﻿using Contracts;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using Models;
+using Models.BaseClasses;
+using Models.Enums;
+using Utilities.IO;
+
+namespace Engine.Services
+{
+	public class GeneratorService : LoggingWorker, IGeneratorService
+	{
+		public GenerationContext Context { get; private set; }
+		private readonly IDataProviderFactory _dataProviderFactory;
+		private readonly IModelGeneratorService _modelGeneratorService;
+		private readonly IResourceOutputEngine _resourceOutputEngine;
+		private readonly AppSettings _appSettings;
+
+		public GeneratorService(
+			IDataProviderFactory dataProviderFactory,
+			IModelGeneratorService modelGeneratorService,
+			IResourceOutputEngine resourceOutputEngine,
+			ILoggerFactory loggerFactory,
+			IOptions<AppSettings> appSettings
+		) : base(loggerFactory)
+		{			
+			_dataProviderFactory = dataProviderFactory;
+			_modelGeneratorService = modelGeneratorService;
+			_resourceOutputEngine = resourceOutputEngine;
+			_appSettings = appSettings.Value;
+		}
+
+		public OperationResult Generate(CommandSettings commandSettings)
+		{
+			var configPath = GetConfigurationPath(commandSettings);
+			var generationContextReadResult = FileUtility.ReadFileAsType<GenerationContext>(configPath);
+			if (generationContextReadResult.Failed)
+			{
+				// log failure and stop
+				return OperationResult.Fail("Could not find configuration file.", Status.Cancelled);
+			}
+			Context = generationContextReadResult.Result;
+
+			var errors = new List<OperationResult>();
+
+			// initialize all data providers
+			var dataProviderNames = Context.Templates.Select(a => a.DataProviderName).Distinct();
+			foreach (var dataProviderName in dataProviderNames)
+			{
+				var dataProviderDefinition = Context.DataProviders.First(a => a.Name == dataProviderName);
+				_dataProviderFactory.Create(dataProviderDefinition);
+			}
+
+			foreach (var template in Context.Templates)
+			{
+				switch (template.Type)
+				{
+					case TemplateType.Model:
+						var generateResult = _modelGeneratorService.GenerateMany(Context, template);
+						if (generateResult.Failed)
+						{
+							errors.Add(generateResult);
+							Logger.LogError(generateResult.Message);
+						}
+
+						break;
+
+					case TemplateType.Setup:
+					default:
+						var generateOneResult = _modelGeneratorService.GenerateOne(Context, template);
+						if (generateOneResult.Failed)
+						{
+							errors.Add(generateOneResult);
+							Logger.LogError(generateOneResult.Message);
+						}
+
+						break;
+				}
+			}
+
+			// copy resource files
+			var resourseWriteResult = _resourceOutputEngine.Write(Context);
+			if (resourseWriteResult.Failed)
+			{
+				return resourseWriteResult;
+			}
+
+			// done
+			if (errors.Any())
+			{
+				var message = errors.Select(a => a.Message).Aggregate("Generation was not completely successful.\r\n\t", (accumulator, next) => $"{accumulator}\r\n\t{next}");
+				return OperationResult.Fail(message);
+			}
+			return OperationResult.Ok();
+		}
+
+		private string GetConfigurationPath(CommandSettings commandSettings)
+		{
+			return string.IsNullOrWhiteSpace(commandSettings.ConfigPath)
+				? Path.Combine(commandSettings.RootPath, _appSettings.DefaultConfigFileName)
+				: commandSettings.ConfigPath.Contains(Path.DirectorySeparatorChar)
+					? File.Exists(commandSettings.ConfigPath)
+						? commandSettings.ConfigPath
+						: Path.Combine(commandSettings.ConfigPath, _appSettings.DefaultConfigFileName)
+					: Path.Combine(commandSettings.RootPath, commandSettings.ConfigPath);
+		}
+	}
+}
