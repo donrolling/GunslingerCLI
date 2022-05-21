@@ -34,11 +34,13 @@ namespace Gunslinger.Factories
             }
             var generationContext = generationContextReadResult.Result;
             var path = Directory.GetCurrentDirectory();
-            //if the user set it to a full path, let them use it, otherwise it is a relative path
+            // if the user set TemplateDirectory to a full path, then nothing needs to happen
+            // but we need the full path, so append the current directory to the relative path
             if (!generationContext.TemplateDirectory.Contains(":\\"))
             {
                 generationContext.TemplateDirectory = $"{path}\\{generationContext.TemplateDirectory}";
             }
+            // read the template text for all of the templates
             foreach (var template in generationContext.Templates)
             {
                 var templatePath = $"{generationContext.TemplateDirectory}\\{template.InputRelativePath}";
@@ -49,7 +51,6 @@ namespace Gunslinger.Factories
                 }
                 template.TemplateText = text;
             }
-
             return OperationResult.Ok(generationContext);
         }
 

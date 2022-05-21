@@ -41,7 +41,8 @@ namespace Engine.Engines
                 }
                 else
                 {
-                    // only write stubs if they don't already exist unless the settings
+                    // only write stubs if they don't already exist
+                    // todo: unless the settings specify to overwrite
                     if (!exists)
                     {
                         File.WriteAllText(path, output);
