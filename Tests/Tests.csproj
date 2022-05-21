@@ -53,12 +53,6 @@
     <None Update="Input\SwaggerTests\RunAllTemplates_RenameOneFile\SwaggerConfig.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Input\SwaggerTests\RunAllWithLocalDataSource\devapi.swagger.petstore.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Input\SwaggerTests\RunAllWithLocalDataSource\SwaggerConfigLocalDataSource.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Templates\BaseRepository.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -36,13 +36,5 @@ namespace Tests.TemplateSetTests
             Assert.IsFalse(contents.Contains("public class Error"), "File should have had its contents replaced to reflect the new name.");
             Assert.IsTrue(contents.Contains("public class RenameError"), "File should have had its contents replaced to reflect the new name.");
         }
-
-        [TestMethod]
-        public void RunAllWithLocalDataSource()
-        {
-            var filename = "SwaggerConfigLocalDataSource.json";
-            var result = RunGeneratorFromConfig(this, TestContext, filename);
-            Assert.IsTrue(result.Success, result.Message);
-        }
     }
 }
