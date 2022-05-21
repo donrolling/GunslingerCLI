@@ -1,0 +1,5 @@
+﻿CREATE PROCEDURE [{{Schema}}].[{{Name.Value}}_Delete] (
+	@{{Key.Name.LowerCamelCase}} {{Key.SQLDataType}}
+) AS
+	DELETE FROM [{{Schema}}].[{{Name.Value}}]
+	WHERE Id = @{{Key.Name.LowerCamelCase}}

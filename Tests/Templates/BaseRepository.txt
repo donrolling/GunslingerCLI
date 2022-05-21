@@ -1,0 +1,61 @@
+﻿{{#Imports}}
+using {{.}};
+{{/Imports}}
+
+namespace {{Namespace}} 
+{
+	public class {{Name.Value}}DapperBaseRepository : DapperAsyncRepository, IEntityDapperRepository<{{Name.Value}}, {{Key.DataType}}> 
+	{
+		public {{Name.Value}}DapperBaseRepository(string connectionString, ILoggerFactory loggerFactory) : base(connectionString, loggerFactory) { }
+		
+		public virtual async Task<InsertResponse<{{Key.DataType}}>> CreateAsync({{Name.Value}} {{Name.LowerCamelCase}})
+		{
+			var sql = @"Execute [{{Schema}}].[{{Name.Value}}_Insert] 
+			{{#each NonKeyProperties}}
+				{{#unless @first}},{{/unless}} @{{Name.LowerCamelCase}}
+			{{/each}}
+				, @{{Key.Name.LowerCamelCase}} OUTPUT
+			";
+			var _params = new DynamicParameters();
+			{{#each NonKeyProperties}}
+			_params.Add("{{Name.LowerCamelCase}}", {{ModelName.LowerCamelCase}}.{{Name.Value}});
+			{{/each}}
+			_params.Add("{{Key.Name.LowerCamelCase}}", dbType: DbType.{{Key.DbType}}, direction: ParameterDirection.Output);
+			var result = await base.ExecuteAsync(sql, _params);
+
+			var {{Key.Name.LowerCamelCase}} = _params.Get<{{Key.DataType}}>("{{Key.Name.LowerCamelCase}}");
+			{{Name.LowerCamelCase}}.{{Key.Name.Value}} = {{Key.Name.LowerCamelCase}};
+			return InsertResponse<{{Key.DataType}}>.GetInsertResponse(result, {{Key.Name.LowerCamelCase}});
+		}
+	
+		public virtual async Task<TransactionResponse> UpdateAsync({{Name.Value}} {{Name.LowerCamelCase}}) 
+		{
+			var sql = @"Execute [{{Schema}}].[{{Name.Value}}_Update] 
+			{{#each Properties}}
+				{{#unless @first}},{{/unless}} @{{Name.LowerCamelCase}}
+			{{/each}}
+			";
+			var result = await base.ExecuteAsync(sql, {{Name.LowerCamelCase}});
+			return result;
+		}
+
+		public virtual async Task<TransactionResponse> DeleteAsync({{Key.DataType}} {{Key.Name.LowerCamelCase}})
+		{
+			var sql = "Execute [{{Schema}}].[{{Name.Value}}_Delete] @{{Key.Name.LowerCamelCase}}";
+			var result = await base.ExecuteAsync(sql, new { @{{Key.Name.LowerCamelCase}} = {{Key.Name.LowerCamelCase}} });
+			return result;
+		}
+
+		public virtual async Task<{{Name.Value}}> SelectByIdAsync({{Key.DataType}} {{Key.Name.LowerCamelCase}})
+		{
+			var sql = "select * from [{{Schema}}].[{{Name.Value}}] where {{Key.Name.Value}} = @{{Key.Name.LowerCamelCase}}";
+			return await this.QuerySingleAsync<{{Name.Value}}>(sql, new { @{{Key.Name.LowerCamelCase}} = {{Key.Name.LowerCamelCase}} });
+		}
+
+		public virtual async Task<IDataResult<{{Name.Value}}>> ReadAllAsync(PageInfo pageInfo) 
+		{
+			var sql = "select * from [{{Schema}}].[{{Name.Value}}]";
+			return await this.QueryDynamicAsync<{{Name.Value}}>(sql, new DynamicParameters(), pageInfo);
+		}
+	}
+}

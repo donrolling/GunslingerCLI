@@ -1,0 +1,90 @@
+﻿{{#Imports}}
+using {{.}};
+{{/Imports}}
+
+namespace {{Namespace}} {
+    [TestClass]
+    public class {{Name.Value}}_CRUD_Test : DataAccessTestBase
+	{
+        private readonly Fixture _fixture = new Fixture();
+		private readonly I{{Name.Value}}Repository _{{Name.LowerCamelCase}}Repository;
+
+        public {{Name.Value}}_CRUD_Test()
+		{
+			_{{Name.LowerCamelCase}}Repository = ServiceProvider.GetService<I{{Name.Value}}Repository>();
+		}
+
+        public async Task<{{Name.Value}}> BuildUp({{#each ForeignKeys}}{{#unless @first}},{{/unless}}{{Source.DataType}} {{Source.Table.LowerCamelCase}}{{Source.Name.Value}}{{/each}})
+        {
+            //create object
+            var {{Name.LowerCamelCase}}_Create = _fixture.Build<{{Name.Value}}>().Without(a => a.{{Key.Name.Value}}).Create();
+			{{#ForeignKeys}}
+			{{../Name.LowerCamelCase}}_Create.{{Source.Table.Value}}{{Source.Name.Value}} = {{Source.Table.LowerCamelCase}}{{Source.Name.Value}};
+			{{/ForeignKeys}}
+
+            //create entity
+            var createResult = await _{{Name.LowerCamelCase}}Repository.CreateAsync({{Name.LowerCamelCase}}_Create);
+            Assert.IsTrue(createResult.Success);
+            return {{Name.LowerCamelCase}}_Create;
+        }
+
+        public async Task TearDown(long {{Key.Name.LowerCamelCase}})
+        {
+            // delete the item in the database
+            var deleteResult = await _{{Name.LowerCamelCase}}Repository.DeleteAsync({{Key.Name.LowerCamelCase}});
+            Assert.IsTrue(deleteResult.Success);
+
+            // verify that the item was deleted
+            var deleteConfirmContact = await _{{Name.LowerCamelCase}}Repository.SelectByIdAsync({{Key.Name.LowerCamelCase}});
+            Assert.IsNull(deleteConfirmContact);
+        }
+
+		[TestMethod]
+		public async Task {{Name.Value}}_CRUD_GivenValidValues_Succeeds()
+		{
+			{{#ForeignKeys}}
+			var {{Source.Table.LowerCamelCase}}_TestClass = new {{Source.Table.Value}}_CRUD_Test();
+			var {{Source.Table.LowerCamelCase}}_Create = await {{Source.Table.LowerCamelCase}}_TestClass.BuildUp();
+			var {{Source.Table.LowerCamelCase}}{{Source.Name.Value}} = {{Source.Table.LowerCamelCase}}_Create.{{Source.Name.Value}};
+			{{/ForeignKeys}}
+
+            var {{Name.LowerCamelCase}}_Create = await BuildUp({{#each ForeignKeys}}{{#unless @first}},{{/unless}}{{Source.Table.LowerCamelCase}}{{Source.Name.Value}}{{/each}});
+			var {{Name.LowerCamelCase}}_Update = _fixture.Build<{{Name.Value}}>().Without(a => a.{{Key.Name.Value}}).Create();
+			
+			{{#ForeignKeys}}
+			{{../Name.LowerCamelCase}}_Update.{{Source.Table.Value}}{{Source.Name.Value}} = {{Source.Table.LowerCamelCase}}{{Source.Name.Value}};
+			{{/ForeignKeys}}
+
+			try
+			{
+				//select object by id to ensure that it was saved to db
+				var new{{Name.Value}} = await _{{Name.LowerCamelCase}}Repository.SelectByIdAsync({{Name.LowerCamelCase}}_Create.{{Key.Name.Value}});
+				Assert.IsNotNull(new{{Name.Value}});
+				
+				// set the update object to have the same Id as the create object so we can easily assign new values
+				{{Name.LowerCamelCase}}_Update.{{Key.Name.Value}} = {{Name.LowerCamelCase}}_Create.{{Key.Name.Value}};
+
+				//update the item in the database
+				var updateResult = await _{{Name.LowerCamelCase}}Repository.UpdateAsync({{Name.LowerCamelCase}}_Update);
+				Assert.IsTrue(updateResult.Success);
+
+				//verify that the data in the newly updated object is not the same as it was previously.
+				var updated{{Name.Value}} = await _{{Name.LowerCamelCase}}Repository.SelectByIdAsync({{Name.LowerCamelCase}}_Create.{{Key.Name.Value}});
+				Assert.IsNotNull(updated{{Name.Value}});
+				
+                // assert that changes were made
+				// ignoring id because we know it is the same
+                var areEqual = TestComparison.DeepCompare(new{{Name.Value}}, updated{{Name.Value}}, new List<string> { "{{Key.Name.Value}}" });
+                Assert.IsTrue(areEqual.Failure, areEqual.Message);
+			}
+			finally 
+			{
+                await TearDown({{Name.LowerCamelCase}}_Create.{{Key.Name.Value}});
+
+			{{#ForeignKeys}}
+                await {{Source.Table.LowerCamelCase}}_TestClass.TearDown({{Source.Table.LowerCamelCase}}_Create.{{Source.Name.Value}});
+			{{/ForeignKeys}}
+			}
+		}
+    }
+}

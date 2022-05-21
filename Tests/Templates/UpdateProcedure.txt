@@ -1,0 +1,11 @@
+﻿CREATE PROCEDURE [{{Schema}}].[{{Name.Value}}_Update] (
+{{#each Properties}}
+	{{#unless @first}},{{/unless}} @{{Name.LowerCamelCase}} {{SqlDataType}}
+{{/each}}
+) AS
+	UPDATE [{{Schema}}].[{{Name.Value}}]
+	SET
+	{{#each NonKeyProperties}}
+	  {{#unless @first}},{{/unless}} [{{Name.Value}}] = @{{Name.LowerCamelCase}}
+	{{/each}}
+	WHERE @{{Key.Name.Value}} = @{{Key.Name.LowerCamelCase}}
