@@ -11,8 +11,24 @@ namespace Tests.TemplateSetTests
 	{
 		public TestContext TestContext { get; set; }
 
-		[TestMethod]
-		public void RunAllStubbs()
+        [TestMethod]
+        public void RunAllBusinessTemplates()
+        {
+            var filename = "GenerationContext.Business.json";
+            var result = RunGeneratorFromConfig(this, TestContext, filename);
+            Assert.IsTrue(result.Success, result.Message);
+        }
+
+        [TestMethod]
+        public void RunAllEntities()
+        {
+            var filename = "GenerationContext.Entities.json";
+            var result = RunGeneratorFromConfig(this, TestContext, filename);
+            Assert.IsTrue(result.Success, result.Message);
+        }
+
+        [TestMethod]
+        public void RunAllStubs()
 		{
 			var filename = "GenerationContextAllStubs.json";
 			var generatorService = GetGeneratorService();
@@ -25,23 +41,6 @@ namespace Tests.TemplateSetTests
 			var folders = di.GetDirectories();
 			Assert.AreEqual(0, folders.Length);
 		}
-
-		[TestMethod]
-		public void RunAllBusinessTemplates()
-		{
-			var filename = "GenerationContext.Business.json";
-			var result = RunGeneratorFromConfig(this, TestContext, filename);
-			Assert.IsTrue(result.Success, result.Message);
-		}
-
-		[TestMethod]
-		public void RunAllEntities()
-		{
-			var filename = "GenerationContext.Entities.json";
-			var result = RunGeneratorFromConfig(this, TestContext, filename);
-			Assert.IsTrue(result.Success, result.Message);
-		}
-
 		[TestMethod]
 		public void RunAllTemplates()
 		{
