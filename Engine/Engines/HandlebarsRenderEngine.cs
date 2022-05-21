@@ -15,17 +15,21 @@ namespace Gunslinger.Engines
             {
                 var type0 = arguments[0].GetType().Name;
                 var type1 = arguments[1].GetType().Name;
+                var argument0 = arguments[0];
+                var argument1 = arguments[1];
                 if (type0 == "UndefinedBindingResult")
                 {
-                    throw new Exception("Argument 0 undefined");
+                    var message = $"argument0: {argument0} - argument1: {argument1}";
+                    throw new Exception($"Argument 0 undefined. Detail: {message}");
                 }
                 if (type1 == "UndefinedBindingResult")
                 {
-                    throw new Exception("Argument 1 undefined");
+                    var message = $"argument0: {argument0} - argument1: {argument1}";
+                    throw new Exception($"Argument 1 undefined. Detail: {message}");
                 }
-                if (type0 == "String" && type1 == "String")
+                if (type0 == "string" && type1 == "string")
                 {
-                    if (arguments[0].Equals(arguments[1]))
+                    if (argument0.Equals(argument1))
                     {
                         options.Template(writer, (object)context);
                     }
@@ -36,7 +40,7 @@ namespace Gunslinger.Engines
                 }
                 else
                 {
-                    if (arguments[0] == arguments[1])
+                    if (argument0 == argument1)
                     {
                         options.Template(writer, (object)context);
                     }
@@ -49,7 +53,8 @@ namespace Gunslinger.Engines
             // register an ifCond helper so I can write if statements in the templates
             Handlebars.RegisterHelper("boolCond", (writer, options, context, arguments) =>
             {
-                if ((bool)arguments[0])
+                var arguments0 = arguments[0];
+                if ((bool)arguments0)
                 {
                     options.Template(writer, (object)context);
                 }

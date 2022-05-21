@@ -3,6 +3,7 @@ using Engine.Models;
 using Microsoft.Extensions.Logging;
 using Models;
 using Models.BaseClasses;
+using Models.Enums;
 
 namespace Engine.Services
 {
@@ -40,9 +41,10 @@ namespace Engine.Services
 
         public OperationResult GenerateMany(GenerationContext settings, Template template)
         {
-            //if (template.IsStub && !settings.ProcessTemplateStubs) {
-            //    return OperationResult.Ok();
-            //}
+            if (template.IsStub && !settings.ProcessTemplateStubs)
+            {
+                return OperationResult.Ok();
+            }
 
             var getResult = getDataItems(settings, template);
             if (getResult.Failed)
@@ -51,21 +53,53 @@ namespace Engine.Services
             }
             var destinationPath = prepareOutputDirectory(settings, template);
             var items = getResult.Result;
+
+            var errors = new List<string>();
             foreach (var (entityName, value) in items)
             {
+                // don't output the excluded types
                 if (template.ExcludeTheseTypes.Contains(value.Name.Value))
                 {
-                    // do everything but output this stuff
                     continue;
                 }
-                var output = _renderEngine.Render(template, value);
-                var result = _templateOutputEngine.Write(destinationPath, value.Name.Value, value.Schema, output, template.IsStub, settings.ProcessTemplateStubs);
-                if (result.Failed)
+
+                var output = string.Empty;
+                try
                 {
-                    return result;
+                    output = _renderEngine.Render(template, value);
+                    var result = _templateOutputEngine.Write(destinationPath, value.Name.Value, value.Schema, output, template.IsStub, settings.ProcessTemplateStubs);
+                    if (result.Failed)
+                    {
+                        var message = $"EntityName: {entityName}\r\nTemplateName: {template.Name} - {result.Message}";
+                        errors.Add(message);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var message = $"EntityName: {entityName}\r\nTemplateName: {template.Name} - {ex.Message}";
+                    errors.Add(message);
                 }
             }
 
+            var renameResult = RenameFiles(template, destinationPath);
+            if (renameResult.Failed)
+            {
+                var message = $"File rename failure: {renameResult.Message}";
+                errors.Add(message);
+            }
+
+            if (errors.Any())
+            {
+                var errorMessages = string.Join(Environment.NewLine, errors);
+                var message = $"Partial or total generation failure: { errorMessages }";
+                return OperationResult.Fail(message, Status.Failed);
+            }
+            return OperationResult.Ok();
+        }
+
+        private OperationResult RenameFiles(Template template, string destinationPath)
+        {
+            // rename files that were specified to be renamed
             if (template.FileRename != null && template.FileRename.Any())
             {
                 // clean name template off of the destination path for renaming
@@ -79,7 +113,6 @@ namespace Engine.Services
                     }
                 }
             }
-
             return OperationResult.Ok();
         }
 
