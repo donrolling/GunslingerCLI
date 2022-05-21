@@ -1,5 +1,5 @@
 {
-  "OutputDirectory": "SwaggerTests\\RunAllWithLocalDataSource",
+  "OutputDirectory": "Output\\SwaggerTests\\RunAllWithLocalDataSource",
   "ProcessTemplateStubs": false,
   "TemplateDirectory": "Templates",
   "ExcludeTheseEntities": [],

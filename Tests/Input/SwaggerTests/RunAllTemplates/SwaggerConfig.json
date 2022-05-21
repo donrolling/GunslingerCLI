@@ -1,5 +1,5 @@
 {
-  "OutputDirectory": "SwaggerTests\\RunAllTemplates",
+  "OutputDirectory": "Output\\SwaggerTests\\RunAllTemplates",
   "ProcessTemplateStubs": false,
   "TemplateDirectory": "Templates",
   "ExcludeTheseEntities": [

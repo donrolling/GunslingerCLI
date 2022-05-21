@@ -1,5 +1,5 @@
 {
-  "OutputDirectory": "SwaggerTests\\RunAllTemplates_RenameOneFile",
+  "OutputDirectory": "Output\\SwaggerTests\\RunAllTemplates_RenameOneFile",
   "ProcessTemplateStubs": false,
   "TemplateDirectory": "Templates",
   "ExcludeTheseEntities": [],
@@ -10,7 +10,7 @@
   ],
   "DataProviders": [
     {
-      "Name": "GenesysModelsDataProvider",
+      "Name": "ModelsDataProvider",
       "TypeName": "SwaggerDataProvider",
       "UseLocalDataSource": true,
       "NonSpecifiedPropertiesAreNullable": true,
@@ -21,15 +21,15 @@
   "Templates": [
     {
       "Type": "Model",
-      "Name": "GenesysModels",
-      "Namespace": "Idi.Marketplace.Bts.Genesys.Entities",
+      "Name": "Models",
+      "Namespace": "Entities",
       "DeleteAllItemsInOutputDirectory": true,
       "IsStub": false,
       "InputRelativePath": "SwaggerModel.txt",
       "OutputRelativePath": "\\{entityName}.cs",
       "Language": "csharp",
 
-      "DataProviderName": "GenesysModelsDataProvider",
+      "DataProviderName": "ModelsDataProvider",
       "Imports": [
         "System.Runtime.Serialization",
         "System.Text",
@@ -37,10 +37,10 @@
       ],
       "FileRename": [
         {
-          "Source": "Item.cs",
-          "Destination": "PolicyEntityGraph.cs",
-          "ClassRenameValue": "public class Item",
-          "ClassReplaceValue": "public class PolicyEntityGraph"
+          "Source": "Error.cs",
+          "Destination": "RenameError.cs",
+          "ClassRenameValue": "public class Error",
+          "ClassReplaceValue": "public class RenameError"
         }
       ]
     }
