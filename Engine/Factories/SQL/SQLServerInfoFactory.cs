@@ -23,29 +23,34 @@ namespace Gunslinger.Factories.SQL
         {
         }
 
-        public SQLServerInfo Create(SQLDataProviderSettings settings)
+        /// <summary>
+        /// Creates SMO objects for schema inspection
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="connectionString"></param>
+        /// <returns></returns>
+        public SQLServerInfo Create(string name, string connectionString)
         {
             //don't construct this stuff twice
-            if (_sqlServerInfo.ContainsKey(settings.Name))
+            if (_sqlServerInfo.ContainsKey(name))
             {
-                return _sqlServerInfo[settings.Name];
+                return _sqlServerInfo[name];
             }
 
-            var builder = new SqlConnectionStringBuilder(settings.DataSource);
-            var sqlConnection = new SqlConnection(settings.DataSource);
+            var builder = new SqlConnectionStringBuilder(connectionString);
+            var sqlConnection = new SqlConnection(connectionString);
             var serverConnection = new ServerConnection(sqlConnection);
             var server = new Server(serverConnection);
             var sqlServerInfo = new SQLServerInfo
             {
                 DatabaseName = builder.InitialCatalog,
-                DataProvider = settings,
                 Server = server,
                 ServerName = builder.DataSource,
             };
             sqlServerInfo.Database = new Database(server, sqlServerInfo.DatabaseName);
 
             //add it to the list
-            _sqlServerInfo.Add(settings.Name, sqlServerInfo);
+            _sqlServerInfo.Add(name, sqlServerInfo);
 
             return sqlServerInfo;
         }

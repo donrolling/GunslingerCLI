@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Contracts;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Linq;
 
@@ -21,7 +22,7 @@ namespace Tests.TemplateSetTests
         public void RunAllTemplates_RenameOneFile()
         {
             var filename = "SwaggerConfig.json";
-            var generatorService = GetGeneratorService();
+            var generatorService = GetService<IGeneratorService>();
             var result = generatorService.Generate(GetCommandSettings(TestContext, filename));
             var template = generatorService.Context.Templates.First();
             var badFilePath = Path.Join(generatorService.Context.OutputDirectory, template.OutputRelativePath.Replace("{entityName}", "Item"));

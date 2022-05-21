@@ -1,5 +1,6 @@
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using Tests.Utilities;
 
 namespace Tests.TestExtensions
@@ -36,6 +37,12 @@ namespace Tests.TestExtensions
         public static string ReadAllText(this TestContext testContext, string filename)
         {
             return TestIOUtility.ReadAllText(testContext.GetTestInputFullPath(filename));
+        }
+
+        public static T ReadJSON<T>(this TestContext testContext, string filename)
+        {
+            var result = TestIOUtility.ReadAllText(testContext.GetTestInputFullPath(filename));
+            return JsonConvert.DeserializeObject<T>(result);
         }
     }
 }

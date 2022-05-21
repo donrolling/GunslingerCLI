@@ -1,0 +1,3 @@
+{
+  "ConnectionString": "Data Source=localhost, 1433;Initial Catalog=Sample;User Id=sa;Password=yourStrong(!)Password;"
+}

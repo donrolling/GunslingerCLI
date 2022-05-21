@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Contracts;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Linq;
 using Tests.TestExtensions;
@@ -31,7 +32,7 @@ namespace Tests.TemplateSetTests
         public void RunAllStubs()
 		{
 			var filename = "GenerationContextAllStubs.json";
-			var generatorService = GetGeneratorService();
+			var generatorService = GetService<IGeneratorService>();
 			var result = generatorService.Generate(GetCommandSettings(TestContext, filename));
 			Assert.IsTrue(result.Success, result.Message);
 
@@ -53,7 +54,7 @@ namespace Tests.TemplateSetTests
 		public void RunAllWithExclusions()
 		{
 			var filename = "GenerationContextExclusions.json";
-			var generatorService = GetGeneratorService();
+			var generatorService = GetService<IGeneratorService>();
 			var result = generatorService.Generate(GetCommandSettings(TestContext, filename));
 			Assert.IsTrue(result.Success, result.Message);
 

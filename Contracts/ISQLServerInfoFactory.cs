@@ -5,6 +5,6 @@ namespace Contracts
 {
 	public interface ISQLServerInfoFactory
 	{
-		SQLServerInfo Create(SQLDataProviderSettings dataProviderSettings);
+		SQLServerInfo Create(string name, string connectionString);
 	}
 }
