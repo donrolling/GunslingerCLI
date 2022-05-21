@@ -86,15 +86,6 @@ namespace Tests.Utilities
             return File.OpenRead(path);
         }
 
-        public static T ReadFromBinaryFile<T>(string path)
-        {
-            using (var stream = File.Open(path, FileMode.Open))
-            {
-                var binaryFormatter = new BinaryFormatter();
-                return (T)binaryFormatter.Deserialize(stream);
-            }
-        }
-
         public static void RenameFile(string path, string newPath)
         {
             File.Move(path, newPath);
@@ -112,14 +103,6 @@ namespace Tests.Utilities
             File.WriteAllText(newpath, json);
         }
 
-        public static void WriteBinaryData(string path, object data)
-        {
-            var newpath = TestPathUtility.PreparePathAndFilenameForSave(path);
-            using (var stream = File.Open(newpath, FileMode.Create))
-            {
-                var binaryFormatter = new BinaryFormatter();
-                binaryFormatter.Serialize(stream, data);
-            }
-        }
+        
     }
 }
