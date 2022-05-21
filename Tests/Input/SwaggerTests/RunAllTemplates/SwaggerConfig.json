@@ -1,5 +1,5 @@
 {
-  "OutputDirectory": "C:\\Projects\\idi\\idi.utilities\\Gunslinger.Templates\\Output",
+  "OutputDirectory": "SwaggerTests\\RunAllTemplates",
   "ProcessTemplateStubs": false,
   "TemplateDirectory": "Templates",
   "ExcludeTheseEntities": [
@@ -15,7 +15,7 @@
       "TypeName": "SwaggerDataProvider",
       "UseLocalDataSource": true,
       "NonSpecifiedPropertiesAreNullable": true,
-      "LocalDataSource": "Tests\\Input\\SwaggerTests\\RunAllTemplates\\devapi.swagger.petstore.json",
+      "LocalDataSource": "Input\\SwaggerTests\\RunAllTemplates\\devapi.swagger.petstore.json",
       "DataSource": ""
     }
   ],

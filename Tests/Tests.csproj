@@ -26,6 +26,39 @@
     <None Update="appSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Input\RunAllTemplatesTests\RunAllBusinessTemplates\GenerationContext.Business.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\RunAllTemplatesTests\RunAllEntities\GenerationContext.Entities.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\RunAllTemplatesTests\RunAllStubs\GenerationContextAllStubs.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\RunAllTemplatesTests\RunAllTemplates\GenerationContext.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\RunAllTemplatesTests\RunAllWithExclusions\GenerationContextExclusions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\SwaggerTests\RunAllTemplates\devapi.swagger.petstore.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\SwaggerTests\RunAllTemplates\SwaggerConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\SwaggerTests\RunAllTemplates_RenameOneFile\devapi.swagger.petstore.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\SwaggerTests\RunAllTemplates_RenameOneFile\SwaggerConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\SwaggerTests\RunAllWithLocalDataSource\devapi.swagger.petstore.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Input\SwaggerTests\RunAllWithLocalDataSource\SwaggerConfigLocalDataSource.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Templates\BaseRepository.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

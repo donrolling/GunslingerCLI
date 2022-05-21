@@ -1,48 +1,48 @@
 {
-    "OutputDirectory": "C:\\Projects\\idi\\idi.utilities\\Gunslinger.Templates\\Output",
-    "ProcessTemplateStubs": false,
-    "TemplateDirectory": "Templates",
-    "ExcludeTheseEntities": [],
-    "ExcludeTheseTemplates": [],
-    "IncludeTheseEntitiesOnly": [],
-    "IncludeTheseTemplatesOnly": [],
-    "Resources": [
-    ],
-    "DataProviders": [
-      {
-        "Name": "GenesysModelsDataProvider",
-        "TypeName": "SwaggerDataProvider",
-        "UseLocalDataSource": true,
-        "NonSpecifiedPropertiesAreNullable": true,
-        "LocalDataSource": "Tests\\Input\\SwaggerTests\\RunAllTemplates_RenameOneFile\\devapi.swagger.petstore.json",
-        "DataSource": ""
-      }
-    ],
-    "Templates": [
+  "OutputDirectory": "SwaggerTests\\RunAllTemplates_RenameOneFile",
+  "ProcessTemplateStubs": false,
+  "TemplateDirectory": "Templates",
+  "ExcludeTheseEntities": [],
+  "ExcludeTheseTemplates": [],
+  "IncludeTheseEntitiesOnly": [],
+  "IncludeTheseTemplatesOnly": [],
+  "Resources": [
+  ],
+  "DataProviders": [
+    {
+      "Name": "GenesysModelsDataProvider",
+      "TypeName": "SwaggerDataProvider",
+      "UseLocalDataSource": true,
+      "NonSpecifiedPropertiesAreNullable": true,
+      "LocalDataSource": "Input\\SwaggerTests\\RunAllTemplates_RenameOneFile\\devapi.swagger.petstore.json",
+      "DataSource": ""
+    }
+  ],
+  "Templates": [
+    {
+      "Type": "Model",
+      "Name": "GenesysModels",
+      "Namespace": "Idi.Marketplace.Bts.Genesys.Entities",
+      "DeleteAllItemsInOutputDirectory": true,
+      "IsStub": false,
+      "InputRelativePath": "SwaggerModel.txt",
+      "OutputRelativePath": "\\{entityName}.cs",
+      "Language": "csharp",
+
+      "DataProviderName": "GenesysModelsDataProvider",
+      "Imports": [
+        "System.Runtime.Serialization",
+        "System.Text",
+        "Newtonsoft.Json"
+      ],
+      "FileRename": [
         {
-            "Type": "Model",
-            "Name": "GenesysModels",
-            "Namespace": "Idi.Marketplace.Bts.Genesys.Entities",
-            "DeleteAllItemsInOutputDirectory": true,
-            "IsStub": false,
-            "InputRelativePath": "SwaggerModel.txt",
-            "OutputRelativePath": "\\{entityName}.cs",
-            "Language": "csharp",
-            
-            "DataProviderName": "GenesysModelsDataProvider",
-            "Imports": [
-                "System.Runtime.Serialization",
-                "System.Text",
-                "Newtonsoft.Json"
-            ],
-            "FileRename": [
-                {
-                    "Source": "Item.cs",
-                    "Destination": "PolicyEntityGraph.cs",
-                    "ClassRenameValue": "public class Item",
-                    "ClassReplaceValue": "public class PolicyEntityGraph"
-                }
-            ]
+          "Source": "Item.cs",
+          "Destination": "PolicyEntityGraph.cs",
+          "ClassRenameValue": "public class Item",
+          "ClassReplaceValue": "public class PolicyEntityGraph"
         }
-    ]
+      ]
+    }
+  ]
 }

@@ -15,7 +15,7 @@ namespace Tests.TemplateSetTests
         {
             var filename = "SwaggerConfig.json";
             var result = RunGeneratorFromConfig(this, TestContext, filename);
-            Assert.IsTrue(result.Success);
+            Assert.IsTrue(result.Success, result.Message);
         }
 
         [TestMethod]
@@ -42,7 +42,7 @@ namespace Tests.TemplateSetTests
         {
             var filename = "SwaggerConfigLocalDataSource.json";
             var result = RunGeneratorFromConfig(this, TestContext, filename);
-            Assert.IsTrue(result.Success);
+            Assert.IsTrue(result.Success, result.Message);
         }
     }
 }
