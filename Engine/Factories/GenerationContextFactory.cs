@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Models;
 using Models.BaseClasses;
 using Models.Enums;
@@ -13,12 +14,12 @@ namespace Gunslinger.Factories
         private readonly IFileProvider _fileProvider;
 
         public GenerationContextFactory(
-            AppSettings appSettings,
+            IOptions<AppSettings> appSettings,
             IFileProvider fileProvider,
             ILoggerFactory loggerFactory
         ) : base(loggerFactory)
         {
-            _appSettings = appSettings;
+            _appSettings = appSettings.Value;
             _fileProvider = fileProvider;
         }
 

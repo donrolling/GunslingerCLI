@@ -27,14 +27,23 @@ namespace Bootstrapper
 				})
 				.ConfigureServices((hostContext, services) =>
 				{
+					// settings
 					services.AddOptions<AppSettings>().Bind(hostContext.Configuration.GetSection(ConfigKeys.AppSettings)).ValidateDataAnnotations();
+
+					// providers
+					services.AddTransient<IFileProvider, FileTemplateProvider>();
+
+					// services
 					services.AddTransient<IGeneratorService, GeneratorService>();
 					services.AddTransient<IModelGeneratorService, ModelGeneratorService>();
+
+					// engines
 					services.AddTransient<ITemplateOutputEngine, FileOutputEngine>();
 					services.AddTransient<IResourceOutputEngine, ResourceOutputEngine>();
-					services.AddTransient<IFileProvider, FileTemplateProvider>();
 					services.AddTransient<IRenderEngine, HandlebarsRenderEngine>();
-					//services.AddTransient<IContextFactory, GenerationContextFactory>();
+
+					// factories
+					services.AddTransient<IContextFactory, GenerationContextFactory>();
 					services.AddTransient<IDataProviderFactory, DataProviderFactory>();
 					services.AddTransient<ISQLServerInfoFactory, SQLServerInfoFactory>();
 				})
