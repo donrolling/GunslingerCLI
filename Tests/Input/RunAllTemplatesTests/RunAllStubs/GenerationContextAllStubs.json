@@ -14,7 +14,7 @@
       "TypeName": "SQLModelDataProvider",
       "UseLocalDataSource": false,
       "LocalDataSource": "",
-      "DataSource": "Data Source=localhost;Initial Catalog=Sample;User Id=sa;Password=yourStrong(!)Password;"
+      "DataSource": "Data Source=localhost,1433;Initial Catalog=Sample;User Id=sa;Password=yourStrong(!)Password;"
     }
   ],
   "Templates": [

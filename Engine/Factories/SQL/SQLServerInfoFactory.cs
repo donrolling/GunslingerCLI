@@ -2,6 +2,7 @@
 using Contracts;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
+using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 using Models.BaseClasses;
 using Models.Settings;
@@ -31,14 +32,17 @@ namespace Gunslinger.Factories.SQL
             }
 
             var builder = new SqlConnectionStringBuilder(settings.DataSource);
+            var sqlConnection = new SqlConnection(settings.DataSource);
+            var serverConnection = new ServerConnection(sqlConnection);
+            var server = new Server(serverConnection);
             var sqlServerInfo = new SQLServerInfo
             {
                 DatabaseName = builder.InitialCatalog,
                 DataProvider = settings,
-                Server = new Server(builder.DataSource),
+                Server = server,
                 ServerName = builder.DataSource,
             };
-            sqlServerInfo.Database = new Database(sqlServerInfo.Server, sqlServerInfo.DatabaseName);
+            sqlServerInfo.Database = new Database(server, sqlServerInfo.DatabaseName);
 
             //add it to the list
             _sqlServerInfo.Add(settings.Name, sqlServerInfo);
