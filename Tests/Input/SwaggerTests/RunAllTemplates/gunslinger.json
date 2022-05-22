@@ -26,7 +26,7 @@
       "Namespace": "Idi.Marketplace.Bts..Entities",
       "IsStub": false,
       "InputRelativePath": "SwaggerModel.txt",
-      "OutputRelativePath": "\\{entityName}.cs",
+      "OutputRelativePath": "Models\\{entityName}.cs",
       "Language": "csharp",
       "DataProviderName": "ModelsDataProvider",
       "Imports": [

@@ -1,5 +1,5 @@
 {
-  "OutputDirectory": "Output\\Exclusions",
+  "OutputDirectory": "Output\\RunAllTemplatesTests\\RunAllWithExclusions",
   "ProcessTemplateStubs": false,
   "TemplateDirectory": "Templates",
   "ExcludeTheseEntities": [ "migration.SchemaVersions" ],
@@ -22,7 +22,7 @@
       "Type": "Model",
       "Name": "Repository",
       "Namespace": "Sample.Data.Repository",
-      "ExcludeTheseTypes": [ "Address" ],
+      "ExcludeTheseTypes": [ "brands" ],
       "IsStub": false,
       "InputRelativePath": "Repository.txt",
       "OutputRelativePath": "{entityName}.cs",

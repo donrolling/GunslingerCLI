@@ -1,8 +1,8 @@
 {
-  "OutputDirectory": "Output\\Stubs",
-  "ProcessTemplateStubs": false,
+  "OutputDirectory": "Output\\RunAllTemplatesTests\\RunAllStubs",
+  "ProcessTemplateStubs": true,
   "TemplateDirectory": "Templates",
-  "ExcludeTheseEntities": [ "Item" ],
+  "ExcludeTheseEntities": [],
   "ExcludeTheseTemplates": [],
   "IncludeTheseEntitiesOnly": [],
   "IncludeTheseTemplatesOnly": [],
@@ -24,7 +24,7 @@
       "Namespace": "Sample.Data.Repository",
       "IsStub": true,
       "InputRelativePath": "Repository.txt",
-      "OutputRelativePath": "{entityName}DapperRepository.cs",
+      "OutputRelativePath": "Repositories\\{entityName}DapperRepository.cs",
       "Language": "csharp",
 
       "DataProviderName": "SQLModelsDataProvider",
@@ -40,7 +40,7 @@
       "Namespace": "Sample.Data.Repository.Base",
       "IsStub": true,
       "InputRelativePath": "BaseRepository.txt",
-      "OutputRelativePath": "{entityName}DapperRepositoryBase.cs",
+      "OutputRelativePath": "Repositories\\Base\\{entityName}DapperRepositoryBase.cs",
       "Language": "csharp",
 
       "DataProviderName": "SQLModelsDataProvider",
@@ -60,7 +60,7 @@
       "Namespace": "Sample.Data.Interfaces",
       "IsStub": true,
       "InputRelativePath": "RepositoryInterface.txt",
-      "OutputRelativePath": "I{entityName}Repository.cs",
+      "OutputRelativePath": "Repositories\\Interfaces\\I{entityName}Repository.cs",
       "Language": "csharp",
 
       "DataProviderName": "SQLModelsDataProvider",

@@ -1,5 +1,5 @@
 {
-  "OutputDirectory": "Output",
+  "OutputDirectory": "Output\\RunAllTemplatesTests\\RunAllEntities",
   "ProcessTemplateStubs": false,
   "TemplateDirectory": "Templates",
   "ExcludeTheseEntities": [ "Item" ],
@@ -30,7 +30,7 @@
       "Namespace": "Sample.Data.Entities",
       "IsStub": false,
       "InputRelativePath": "EntityModel.txt",
-      "OutputRelativePath": "Sample.Data\\Entities\\{entityName}.cs",
+      "OutputRelativePath": "Entities\\{entityName}.cs",
       "Language": "csharp",
       "DataProviderName": "SQLModelsDataProvider",
       "Imports": [

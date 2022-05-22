@@ -6,8 +6,7 @@
   "ExcludeTheseTemplates": [],
   "IncludeTheseEntitiesOnly": [],
   "IncludeTheseTemplatesOnly": [],
-  "Resources": [
-  ],
+  "Resources": [],
   "DataProviders": [
     {
       "Name": "ModelsDataProvider",
@@ -26,9 +25,8 @@
       "DeleteAllItemsInOutputDirectory": true,
       "IsStub": false,
       "InputRelativePath": "SwaggerModel.txt",
-      "OutputRelativePath": "\\{entityName}.cs",
+      "OutputRelativePath": "Models\\{entityName}.cs",
       "Language": "csharp",
-
       "DataProviderName": "ModelsDataProvider",
       "Imports": [
         "System.Runtime.Serialization",

@@ -1,5 +1,5 @@
 {
-  "OutputDirectory": "SampleProject",
+  "OutputDirectory": "Output\\RunAllTemplatesTests\\RunAllBusinessTemplates",
   "ProcessTemplateStubs": false,
   "TemplateDirectory": "Templates",
   "ExcludeTheseEntities": [ "Item" ],
@@ -21,10 +21,10 @@
     {
       "Type": "Model",
       "Name": "BaseService",
-      "Namespace": "Sample.Business.Services",
+      "Namespace": "Business.Services",
       "IsStub": false,
       "InputRelativePath": "BaseService.txt",
-      "OutputRelativePath": "Sample.business\\Services\\{entityName}.cs",
+      "OutputRelativePath": "Services\\{entityName}.cs",
       "Language": "csharp",
 
       "DataProviderName": "SQLModelsDataProvider",
