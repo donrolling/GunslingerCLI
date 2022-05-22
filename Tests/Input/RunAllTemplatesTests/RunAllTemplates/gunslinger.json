@@ -28,10 +28,10 @@
     {
       "Type": "Model",
       "Name": "EntityModels",
-      "Namespace": "Sample.data.Entities",
+      "Namespace": "Sample.Data.Entities",
       "IsStub": false,
       "InputRelativePath": "EntityModel.txt",
-      "OutputRelativePath": "Sample.data\\Entities\\{entityName}.cs",
+      "OutputRelativePath": "Entities\\{entityName}.cs",
       "Language": "csharp",
 
       "DataProviderName": "SQLModelsDataProvider",
@@ -47,7 +47,7 @@
       "Namespace": "Sample.Data.Repository",
       "IsStub": false,
       "InputRelativePath": "Repository.txt",
-      "OutputRelativePath": "Sample.data\\Repository\\Dapper\\{entityName}DapperRepository.cs",
+      "OutputRelativePath": "Repository\\Dapper\\{entityName}DapperRepository.cs",
       "Language": "csharp",
 
       "DataProviderName": "SQLModelsDataProvider",
@@ -63,7 +63,7 @@
       "Namespace": "Sample.Data.Repository.Base",
       "IsStub": false,
       "InputRelativePath": "BaseRepository.txt",
-      "OutputRelativePath": "Sample.data\\Repository\\Dapper\\Base\\{entityName}DapperRepositoryBase.cs",
+      "OutputRelativePath": "Repository\\Dapper\\Base\\{entityName}DapperRepositoryBase.cs",
       "Language": "csharp",
 
       "DataProviderName": "SQLModelsDataProvider",
@@ -84,7 +84,7 @@
       "Namespace": "Sample.Data.Interfaces",
       "IsStub": false,
       "InputRelativePath": "RepositoryInterface.txt",
-      "OutputRelativePath": "Sample.data\\Repository\\Interfaces\\I{entityName}Repository.cs",
+      "OutputRelativePath": "Repository\\Interfaces\\I{entityName}Repository.cs",
       "Language": "csharp",
 
       "DataProviderName": "SQLModelsDataProvider",
@@ -96,19 +96,19 @@
     {
       "Type": "Model",
       "Name": "RepositoryTest",
-      "Namespace": "Sample.Test.DataAccess",
+      "Namespace": "Test.DataAccess",
       "IsStub": false,
       "InputRelativePath": "DataAccessTest.txt",
-      "OutputRelativePath": "Sample.test\\DataAccess\\{entityName}_CRUD_Test.cs",
+      "OutputRelativePath": "DataAccess\\{entityName}_CRUD_Test.cs",
       "Language": "csharp",
 
       "DataProviderName": "SQLModelsDataProvider",
       "Imports": [
         "AutoFixture",
-        "Sample.data.Entities",
-        "Sample.Data.Interfaces",
-        "Sample.test.Base",
-        "Sample.test.Utility",
+        "Data.Entities",
+        "Data.Interfaces",
+        "Test.Base",
+        "Test.Utility",
         "Microsoft.Extensions.DependencyInjection",
         "Microsoft.VisualStudio.TestTools.UnitTesting",
         "System.Collections.Generic",
@@ -121,7 +121,7 @@
       "Namespace": "",
       "IsStub": false,
       "InputRelativePath": "InsertProcedure.txt",
-      "OutputRelativePath": "Sample.database\\{schema}\\Stored Procedures\\{entityName}_Insert.sql",
+      "OutputRelativePath": "{schema}\\Stored Procedures\\{entityName}_Insert.sql",
       "Language": "sql",
 
       "DataProviderName": "SQLModelsDataProvider",
@@ -133,7 +133,7 @@
       "Namespace": "",
       "IsStub": false,
       "InputRelativePath": "UpdateProcedure.txt",
-      "OutputRelativePath": "Sample.database\\{schema}\\Stored Procedures\\{entityName}_Update.sql",
+      "OutputRelativePath": "{schema}\\Stored Procedures\\{entityName}_Update.sql",
       "Language": "sql",
 
       "DataProviderName": "SQLModelsDataProvider",
@@ -145,7 +145,7 @@
       "Namespace": "",
       "IsStub": false,
       "InputRelativePath": "DeleteProcedure.txt",
-      "OutputRelativePath": "Sample.database\\{schema}\\Stored Procedures\\{entityName}_Delete.sql",
+      "OutputRelativePath": "{schema}\\Stored Procedures\\{entityName}_Delete.sql",
       "Language": "sql",
 
       "DataProviderName": "SQLModelsDataProvider",
@@ -154,16 +154,16 @@
     {
       "Type": "Setup",
       "Name": "DataAccessTestInjectionWireUp",
-      "Namespace": "Sample.test.Injection",
+      "Namespace": "Test.Injection",
       "IsStub": false,
       "InputRelativePath": "DataAccessTestInjectionWireUp.txt",
-      "OutputRelativePath": "Sample.test\\Injection\\DataAccess.cs",
+      "OutputRelativePath": "Injection\\DataAccess.cs",
       "Language": "sql",
 
       "DataProviderName": "SQLModelsDataProvider",
       "Imports": [
-        "Sample.Data.Repository",
-        "Sample.Data.Interfaces",
+        "Data.Repository",
+        "Data.Interfaces",
         "Microsoft.Extensions.DependencyInjection",
         "Microsoft.Extensions.Logging"
       ]
