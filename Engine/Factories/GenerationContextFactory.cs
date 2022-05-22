@@ -30,7 +30,8 @@ namespace Gunslinger.Factories
             if (generationContextReadResult.Failed)
             {
                 // log failure and stop
-                return OperationResult.Fail<GenerationContext>("Could not find configuration file.", Status.Cancelled);
+                var msg = $"Could not find configuration file. Searched here: {configPath}.{Environment.NewLine}Type 'gs --help' for help.";
+                return OperationResult.Fail<GenerationContext>(msg, Status.Cancelled);
             }
             var generationContext = generationContextReadResult.Result;
             var path = Directory.GetCurrentDirectory();

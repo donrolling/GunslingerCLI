@@ -5,14 +5,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Models;
 using Models.Enums;
+using Newtonsoft.Json;
 
-var commandSettingsResult = GetOptions(args);
-var host = Bootstrapper.Configuration.ConfigureServices();
+var host = Bootstrapper.Configuration.ConfigureServices(AppDomain.CurrentDomain.BaseDirectory);
 using (var scope = host.Services.CreateScope())
 {
 	var services = scope.ServiceProvider;
 	var logger = services.GetRequiredService<ILogger<Program>>();
 	var generatorService = services.GetRequiredService<IGeneratorService>();
+	var commandSettingsResult = GetOptions(args, logger);
 
 	if (commandSettingsResult.Failed)
 	{
@@ -20,7 +21,12 @@ using (var scope = host.Services.CreateScope())
 		return;
 	}
 
-	var result = generatorService.Generate(commandSettingsResult.Result);
+	var commandSettings = commandSettingsResult.Result;
+	var commandSettingsJson = JsonConvert.SerializeObject(commandSettings);
+	var configurationMessage = $"Command Settings:{commandSettingsJson}";
+	logger.LogInformation(configurationMessage);
+
+	var result = generatorService.Generate(commandSettings);
 	if (result.Success)
 	{
 		logger.LogInformation("Model generation succeeded.");
@@ -34,7 +40,7 @@ using (var scope = host.Services.CreateScope())
 	Thread.Sleep(TimeSpan.FromSeconds(1));
 }
 
-static OperationResult<CommandSettings> GetOptions(string[] args)
+static OperationResult<CommandSettings> GetOptions(string[] args, ILogger logger)
 {
 	var options = Parser.Default.ParseArguments<Options>(args);
 	if (options.Errors.Any())
@@ -47,20 +53,12 @@ static OperationResult<CommandSettings> GetOptions(string[] args)
 	{
 		return OperationResult.Fail<CommandSettings>("Command Line Arguments are missing.", Status.Cancelled);
 	}
-	var terminalRoot = commandLineArgs[0];
+	var terminalRoot = Environment.CurrentDirectory;
+	logger.LogInformation($"Current Directory: {terminalRoot}");
 	if (string.IsNullOrWhiteSpace(terminalRoot))
 	{
 		return OperationResult.Fail<CommandSettings>("Command Line Arguments are missing.", Status.Cancelled);
-	}
-	// test for "running in console" situation
-	// hopefully this situation won't ever be what happens when running this as a tool
-	// in that case, here is an example of the first argument: R:\\GitHub\\Gunslinger\\GunslingerCLI\\GunslingerCLI\\bin\\Debug\\net6.0\\GunslingerCLI.dll
-	// we'll pull the filename off and use that path for the root path
-	if (File.Exists(terminalRoot))
-	{
-		var directoryInfo = new DirectoryInfo(terminalRoot);
-		terminalRoot = directoryInfo.Parent.FullName;
-	}
+	}	
 	var commandSettings = new CommandSettings
 	{
 		ConfigPath = options.Value.ConfigPath,

@@ -16,14 +16,15 @@ namespace Bootstrapper
 {
 	public class Configuration
 	{
-		public static IHost ConfigureServices()
+		public static IHost ConfigureServices(string baseDirectory = "")
 		{
 			Log.Logger = new LoggerConfiguration().CreateLogger();
 
 			return Host.CreateDefaultBuilder()
 				.ConfigureAppConfiguration((context, builder) =>
 				{
-					builder.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+					var path = $"{baseDirectory}appsettings.json";
+					builder.AddJsonFile(path, optional: false, reloadOnChange: true);
 				})
 				.ConfigureServices((hostContext, services) =>
 				{
