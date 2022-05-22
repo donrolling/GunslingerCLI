@@ -6,43 +6,48 @@ using Utilities.Extensions;
 
 namespace Gunslinger.Factories
 {
-	public class NameFactory
-	{
-		public static Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+    public class NameFactory
+    {
+        public static Regex rgx = new Regex("[^a-zA-Z0-9 -]");
 
-		public static Name Create(string name, Template template, bool isClass)
-		{
-			// don't use pluralization on anything but class names
-			if (!isClass)
-			{
-				return MakeName(name);
-			}
-			var pluralizer = new Pluralizer();
-			switch (template.PluralizationSettings)
-			{
-				case PluralizationSettings.Plural:
-					var pluralName = pluralizer.Pluralize(name);
-					return MakeName(pluralName);
+        public static Name Create(string name)
+        {
+            return MakeName(name);
+        }
 
-				case PluralizationSettings.Singular:
-					var singularName = pluralizer.Singularize(name);
-					return MakeName(singularName);
+        public static Name Create(string name, Template template, bool isClass)
+        {
+            // don't use pluralization on anything but class names
+            if (!isClass)
+            {
+                return MakeName(name);
+            }
+            var pluralizer = new Pluralizer();
+            switch (template.PluralizationSettings)
+            {
+                case PluralizationSettings.Plural:
+                    var pluralName = pluralizer.Pluralize(name);
+                    return MakeName(pluralName);
 
-				case PluralizationSettings.None:
-				default:
-					return MakeName(name);
-			}
-		}
+                case PluralizationSettings.Singular:
+                    var singularName = pluralizer.Singularize(name);
+                    return MakeName(singularName);
 
-		private static Name MakeName(string name)
-		{
-			return new Name
-			{
-				Value = name,
-				LowerCamelCase = rgx.Replace(name.ToCamelCase(), ""),
-				PascalCase = rgx.Replace(name.ToPascalCase(), ""),
-				NameWithSpaces = name.UnCamelCase(),
-			};
-		}
-	}
+                case PluralizationSettings.None:
+                default:
+                    return MakeName(name);
+            }
+        }
+
+        private static Name MakeName(string name)
+        {
+            return new Name
+            {
+                Value = name,
+                LowerCamelCase = rgx.Replace(name.ToCamelCase(), ""),
+                PascalCase = rgx.Replace(name.ToPascalCase(), ""),
+                NameWithSpaces = name.UnCamelCase(),
+            };
+        }
+    }
 }

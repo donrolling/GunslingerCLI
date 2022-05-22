@@ -4,5 +4,5 @@ using {{.}};
 
 namespace {{Namespace}} 
 {
-	public interface I{{Name.Value}}Repository : IEntityDapperRepository<{{Name.Value}}, {{Key.DataType}}> { }
+	public interface I{{Name.PascalCase}}Repository : IEntityDapperRepository<{{Name.PascalCase}}, {{Key.DataType}}> { }
 }

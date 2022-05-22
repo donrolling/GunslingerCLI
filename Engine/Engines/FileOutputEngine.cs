@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Gunslinger.Factories;
 using Microsoft.Extensions.Logging;
 using Models;
 using Models.BaseClasses;
@@ -58,8 +59,10 @@ namespace Engine.Engines
 
         public OperationResult Write(string destinationPath, string entityName, string schema, string output, bool isStub, bool processTemplateStubs)
         {
-            var validFileName = makeValidFileName(entityName);
-            var validSchemaName = makeValidFileName(schema);
+            var entityNameName = NameFactory.Create(entityName);
+            var schemaName = NameFactory.Create(schema);
+            var validFileName = makeValidFileName(entityNameName.PascalCase);
+            var validSchemaName = makeValidFileName(schemaName.PascalCase);
             var path = destinationPath.Replace("{entityName}", validFileName).Replace("{schema}", validSchemaName);
             return Write(path, output, isStub, processTemplateStubs);
         }
