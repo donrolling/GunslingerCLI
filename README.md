@@ -3,6 +3,7 @@
 The Gunslinger templating engine is built on top of the [Handlebars](https://github.com/Handlebars-Net/Handlebars.Net) templating system, which is an enhancement of the Logic-less [Mustache](https://mustache.github.io/) templating system. 
 
 I've continued in the tradition of naming this tool after a style of facial hair.
+
 ![Gunslinger Beard](https://user-images.githubusercontent.com/1778167/169899048-b905a62e-ad65-418b-a64e-7778f2364505.png)
 
 The primary idea is that a json config file and some templates can provide everything you need to generate massive portions of your project in 
