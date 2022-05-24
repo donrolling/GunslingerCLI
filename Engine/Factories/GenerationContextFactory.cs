@@ -51,7 +51,11 @@ namespace Engine.Factories
 				RootPath = commandSettings.RootPath,
 				TemplateDirectory = FixPath(commandSettings.RootPath, generationContextJSON.TemplateDirectory)
 			};
-			ConfigureDataProviders(generationContextJSON, generationContext);
+			var configureDataProvidersResult = ConfigureDataProviders(generationContextJSON, generationContext);
+			if (configureDataProvidersResult.Failed)
+			{
+				return OperationResult.Fail<GenerationContext>(configureDataProvidersResult.Message, Status.Cancelled);
+			}
 			ReadTemplateText(generationContextJSON, generationContext);
 			return OperationResult.Ok(generationContext);
 		}
@@ -80,35 +84,44 @@ namespace Engine.Factories
 			return path.Contains(":\\") ? path : $"{rootPath}\\{path}";
 		}
 
-		private void ConfigureDataProviders(GenerationContextJSON generationContextJSON, GenerationContext generationContext)
+		private OperationResult ConfigureDataProviders(GenerationContextJSON generationContextJSON, GenerationContext generationContext)
 		{
-			foreach (var dataProvider in generationContextJSON.DataProviders)
+			try
 			{
-				DataProviderTypes dataProviderType;
-				var typeName = dataProvider["TypeName"].ToString();
-				if (Enum.TryParse(typeName, out dataProviderType))
+				foreach (var dataProvider in generationContextJSON.DataProviders)
 				{
-					switch (dataProviderType)
+					DataProviderTypes dataProviderType;
+					var typeName = dataProvider["TypeName"].ToString();
+					if (Enum.TryParse(typeName, out dataProviderType))
 					{
-						case DataProviderTypes.SQLDataProvider:
-							var sqlDataProvider = ConfigureSQLDataProvider(dataProvider);
-							generationContext.DataProviders.Add(sqlDataProvider);
-							break;
+						switch (dataProviderType)
+						{
+							case DataProviderTypes.SQLDataProvider:
+								var sqlDataProvider = ConfigureSQLDataProvider(dataProvider);
+								generationContext.DataProviders.Add(sqlDataProvider);
+								break;
 
-						case DataProviderTypes.SwaggerDataProvider:
-							var swaggerDataProvider = ConfigureSwaggerDataProvider(dataProvider);
-							generationContext.DataProviders.Add(swaggerDataProvider);
-							break;
+							case DataProviderTypes.SwaggerDataProvider:
+								var swaggerDataProvider = ConfigureSwaggerDataProvider(dataProvider);
+								generationContext.DataProviders.Add(swaggerDataProvider);
+								break;
 
-						default:
-							break;
+							default:
+								break;
+						}
+					}
+					else
+					{
+						throw new Exception($"Could not properly type the DataProviderType for '{dataProvider["Name"]}'{Environment.NewLine}ConfigPath: {generationContextJSON.ConfigPath}");
 					}
 				}
-				else
-				{
-					throw new Exception($"Could not properly type the DataProviderType for '{dataProvider["Name"]}'{Environment.NewLine}ConfigPath: {generationContextJSON.ConfigPath}");
-				}
 			}
+			catch (Exception ex)
+			{
+				var message = $"DataProvider parsing issue: {ex.Message}";
+				return OperationResult.Fail(message);
+			}
+			return OperationResult.Ok();
 		}
 
 		private SQLDataProviderSettings ConfigureSQLDataProvider(dynamic dataProvider)
