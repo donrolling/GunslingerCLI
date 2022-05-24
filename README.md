@@ -33,10 +33,18 @@ I think install works differently if using a non-local nupkg. More on that when 
 - create a nupkg in the PackageOutputPath location 
 	> dotnet pack
 - install the tool globally
+	When using local source
 	> dotnet tool install -g --add-source ./nupkg GunslingerCLI
+	
+	When using Nuget source
+	> dotnet tool install -g GunslingerCLI
 
 **Update the tool**
+When using local source
 > dotnet tool update -g --add-source ./nupkg GunslingerCLI
+
+When using Nuget source
+> dotnet tool update -g GunslingerCLI
 
 **Uninstall the tool**
 > dotnet tool uninstall GunslingerCLI -g
