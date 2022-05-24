@@ -1,6 +1,4 @@
-﻿using Models;
-
-namespace Engine.Models
+﻿namespace Models
 {
 	public class DataTypeInfo
 	{

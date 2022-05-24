@@ -1,5 +1,4 @@
-﻿using Engine.Models;
-using Gunslinger.Factories;
+﻿using Gunslinger.Factories;
 using Models;
 
 namespace Gunslinger.Types

@@ -1,6 +1,6 @@
 ﻿using Contracts;
 
-namespace Engine.Models
+namespace Models
 {
 	public class GroupModel : IGroupProviderModel
 	{
