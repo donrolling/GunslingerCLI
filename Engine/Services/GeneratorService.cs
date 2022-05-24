@@ -49,8 +49,8 @@ namespace Engine.Services
             var dataProviderNames = Context.Templates.Select(a => a.DataProviderName).Distinct();
             foreach (var dataProviderName in dataProviderNames)
             {
-                var dataProviderDefinition = Context.DataProviders.First(a => a.Name == dataProviderName);
-                _dataProviderFactory.Create(dataProviderDefinition);
+                var dataProviderSettings = Context.DataProviders.First(a => a.Name == dataProviderName);
+                _dataProviderFactory.Create(dataProviderSettings);
             }
 
             foreach (var template in Context.Templates)

@@ -11,8 +11,8 @@ namespace Gunslinger.Factories
 	{
 		private static readonly Dictionary<string, IDataProvider> _dataProviderDictionary;
 
-		private readonly ISQLServerInfoFactory _sqlServerInfoFactory;
 		private readonly ILoggerFactory _loggerFactory;
+		private readonly ISQLServerInfoFactory _sqlServerInfoFactory;
 
 		static DataProviderFactory()
 		{
@@ -25,30 +25,28 @@ namespace Gunslinger.Factories
 			_loggerFactory = loggerFactory;
 		}
 
-		public IDataProvider Create(dynamic dataProviderSettings)
+		public IDataProvider Create(IDataProviderSettings dataProviderSettings)
 		{
-			var allSettings = JsonConvert.SerializeObject(dataProviderSettings);
-			var generalSettings = JsonConvert.DeserializeObject<DataProviderSettings>(allSettings);
-			if (_dataProviderDictionary.ContainsKey(generalSettings.Name))
+			if (_dataProviderDictionary.ContainsKey(dataProviderSettings.Name))
 			{
-				return _dataProviderDictionary[generalSettings.Name];
+				return _dataProviderDictionary[dataProviderSettings.Name];
 			}
-			switch (generalSettings.TypeName)
+			switch (dataProviderSettings.TypeName)
 			{
-				case "SwaggerDataProvider":
-					var swaggerDataProviderSettings = JsonConvert.DeserializeObject<SwaggerDataProviderSettings>(allSettings);
+				case Domain.Enums.DataProviderTypes.SwaggerDataProvider:
+					var swaggerDataProviderSettings = JsonConvert.DeserializeObject<SwaggerDataProviderSettings>(JsonConvert.SerializeObject(dataProviderSettings));
 					var swaggerDataProvider = new SwaggerDataProvider(swaggerDataProviderSettings, _loggerFactory);
 					_dataProviderDictionary.Add(swaggerDataProviderSettings.Name, swaggerDataProvider);
 					return swaggerDataProvider;
 
-				case "SQLModelDataProvider":
-					var sqlDataProviderSettings = JsonConvert.DeserializeObject<SQLDataProviderSettings>(allSettings);
+				case Domain.Enums.DataProviderTypes.SQLDataProvider:
+					var sqlDataProviderSettings = JsonConvert.DeserializeObject<SQLDataProviderSettings>(JsonConvert.SerializeObject(dataProviderSettings));
 					var sqlModelDataProvider = new SQLModelDataProvider(_sqlServerInfoFactory, sqlDataProviderSettings, _loggerFactory);
 					_dataProviderDictionary.Add(sqlDataProviderSettings.Name, sqlModelDataProvider);
 					return sqlModelDataProvider;
 
 				default:
-					var msg = $"Create() - Name not matched: {generalSettings.TypeName}";
+					var msg = $"Create() - Name not matched: {dataProviderSettings.TypeName}";
 					this.Logger.LogError(msg);
 					throw new Exception(msg);
 			}

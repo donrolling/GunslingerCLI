@@ -2,7 +2,7 @@
 {
 	public interface IDataProviderFactory
 	{
-		IDataProvider Create(dynamic dataProviderSettings);
+		IDataProvider Create(IDataProviderSettings dataProviderSettings);
 
 		IDataProvider Get(string name);
 	}
