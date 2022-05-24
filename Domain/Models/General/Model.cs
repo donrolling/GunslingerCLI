@@ -1,8 +1,7 @@
 ﻿using Contracts;
-using Domain.Models.General;
 using Models;
 
-namespace Engine.Models
+namespace Domain.Models.General
 {
 	public class Model : ModelBase, IProviderModel
 	{

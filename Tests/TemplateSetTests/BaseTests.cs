@@ -1,5 +1,6 @@
 ﻿using Bootstrapper;
 using Contracts;
+using Domain.Models.General;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -10,7 +11,7 @@ using Tests.TestExtensions;
 
 namespace Tests.TemplateSetTests
 {
-    public abstract class BaseTests
+	public abstract class BaseTests
     {
         protected string RootPath { get; }
 

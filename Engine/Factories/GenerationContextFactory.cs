@@ -1,12 +1,12 @@
 ﻿using Contracts;
 using Domain.Enums;
 using Domain.Models;
+using Domain.Models.General;
+using Domain.Models.Settings;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Models;
 using Models.BaseClasses;
-using Models.Enums;
-using Models.Settings;
 using Omu.ValueInjecter;
 using Utilities.IO;
 

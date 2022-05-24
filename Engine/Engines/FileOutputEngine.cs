@@ -1,7 +1,7 @@
 ﻿using Contracts;
+using Domain.Models.General;
 using Gunslinger.Factories;
 using Microsoft.Extensions.Logging;
-using Models;
 using Models.BaseClasses;
 using System.Text.RegularExpressions;
 

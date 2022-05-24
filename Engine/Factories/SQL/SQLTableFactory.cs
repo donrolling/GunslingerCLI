@@ -4,7 +4,6 @@ using System.Linq;
 using Domain.Models.General;
 using Domain.Models.SQL;
 using Microsoft.SqlServer.Management.Smo;
-using Models;
 
 using Omu.ValueInjecter;
 

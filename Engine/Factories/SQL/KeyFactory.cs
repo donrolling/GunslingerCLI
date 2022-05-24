@@ -1,7 +1,7 @@
-﻿using Domain.Models.SQL;
+﻿using Domain.Models.General;
+using Domain.Models.SQL;
 using Gunslinger.Types;
 using Microsoft.SqlServer.Management.Smo;
-using Models;
 
 namespace Gunslinger.Factories.SQL
 {

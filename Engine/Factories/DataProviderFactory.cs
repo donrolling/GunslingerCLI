@@ -1,8 +1,8 @@
 ﻿using Contracts;
+using Domain.Models.Settings;
 using Gunslinger.DataProviders;
 using Microsoft.Extensions.Logging;
 using Models.BaseClasses;
-using Models.Settings;
 using Newtonsoft.Json;
 
 namespace Gunslinger.Factories

@@ -1,13 +1,13 @@
 ﻿using Contracts;
+using Domain.Models.General;
 using Microsoft.Extensions.Logging;
-using Models;
 using Models.BaseClasses;
 using Stubble.Core;
 using Stubble.Core.Builders;
 
 namespace Gunslinger.Engines
 {
-    public class StubbleRenderEngine : LoggingWorker, IRenderEngine
+	public class StubbleRenderEngine : LoggingWorker, IRenderEngine
     {
         private static readonly StubbleVisitorRenderer _stubbleVisitorRenderer = new StubbleBuilder().Build();
 

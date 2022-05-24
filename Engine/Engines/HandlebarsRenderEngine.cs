@@ -1,12 +1,12 @@
 ﻿using Contracts;
-using Models;
 using Models.BaseClasses;
 using HandlebarsDotNet;
 using Microsoft.Extensions.Logging;
+using Domain.Models.General;
 
 namespace Gunslinger.Engines
 {
-    public class HandlebarsRenderEngine : LoggingWorker, IRenderEngine
+	public class HandlebarsRenderEngine : LoggingWorker, IRenderEngine
     {
         public HandlebarsRenderEngine(ILoggerFactory loggerFactory) : base(loggerFactory)
         {

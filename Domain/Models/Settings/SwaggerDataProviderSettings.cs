@@ -1,4 +1,4 @@
-﻿namespace Models.Settings
+﻿namespace Domain.Models.Settings
 {
 	public class SwaggerDataProviderSettings : DataProviderSettings
 	{

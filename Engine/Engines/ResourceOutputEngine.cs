@@ -1,7 +1,7 @@
 ﻿using Contracts;
 using Domain.Models;
+using Domain.Models.General;
 using Microsoft.Extensions.Logging;
-using Models;
 
 namespace Gunslinger.Engines
 {

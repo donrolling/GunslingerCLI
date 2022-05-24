@@ -1,5 +1,5 @@
-﻿using Gunslinger.Factories;
-using Models;
+﻿using Domain.Models.General;
+using Gunslinger.Factories;
 
 namespace Engine.Types
 {

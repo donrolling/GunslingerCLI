@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.FileProviders;
-using Models;
-using Models.Enums;
+﻿using Domain.Enums;
+using Domain.Models.General;
+using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json;
 using System.Text;
 using System.Text.RegularExpressions;

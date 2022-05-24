@@ -1,13 +1,13 @@
 ﻿using Contracts;
 using Domain.Enums;
 using Domain.Models;
+using Domain.Models.General;
+using Domain.Models.Settings;
 using Domain.Models.SQL;
 using Gunslinger.Factories.SQL;
 using Microsoft.Extensions.Logging;
 using Microsoft.SqlServer.Management.Smo;
-using Models;
 using Models.BaseClasses;
-using Models.Settings;
 
 namespace Gunslinger.DataProviders
 {

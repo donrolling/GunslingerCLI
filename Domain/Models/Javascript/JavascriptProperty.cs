@@ -1,9 +1,9 @@
 ﻿using Domain.Models.General;
 
-namespace Models.Javascript
+namespace Domain.Models.Javascript
 {
 	public class JavascriptProperty : Property
-    {
-        public string JavascriptDataType { get; set; }
-    }
+	{
+		public string JavascriptDataType { get; set; }
+	}
 }

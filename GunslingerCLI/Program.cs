@@ -1,10 +1,11 @@
 ﻿using CommandLine;
 using Contracts;
+using Domain.Enums;
+using Domain.Models.General;
 using GunslingerCLI.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Models;
-using Models.Enums;
 using Newtonsoft.Json;
 
 var host = Bootstrapper.Configuration.ConfigureServices(AppDomain.CurrentDomain.BaseDirectory);

@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Domain.Models;
+using Domain.Models.General;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Models;
@@ -8,7 +9,7 @@ using Models.Enums;
 
 namespace Engine.Services
 {
-    public class GeneratorService : LoggingWorker, IGeneratorService
+	public class GeneratorService : LoggingWorker, IGeneratorService
     {
         public GenerationContext Context { get; private set; }
 
