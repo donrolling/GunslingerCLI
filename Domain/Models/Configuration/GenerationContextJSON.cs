@@ -1,6 +1,6 @@
 ﻿using Domain.Models.General;
 
-namespace Domain.Models
+namespace Domain.Models.Configuration
 {
 	public class GenerationContextJSON
 	{

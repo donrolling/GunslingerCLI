@@ -9,7 +9,8 @@ namespace Domain.Models.General
 		/// </summary>
 		public T Result { get; set; }
 
-		public OperationResult() { }
+		public OperationResult()
+		{ }
 
 		public OperationResult(OperationResult copyFrom, T result)
 		{

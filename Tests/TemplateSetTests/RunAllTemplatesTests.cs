@@ -2,8 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Linq;
-using Tests.TestExtensions;
-using Tests.Utilities;
 
 namespace Tests.TemplateSetTests
 {
@@ -12,24 +10,24 @@ namespace Tests.TemplateSetTests
 	{
 		public TestContext TestContext { get; set; }
 
-        [TestMethod]
-        public void RunAllBusinessTemplates()
-        {
-            var filename = "gunslinger.json";
-            var result = RunGeneratorFromConfig(this, TestContext, filename);
-            Assert.IsTrue(result.Success, result.Message);
-        }
+		[TestMethod]
+		public void RunAllBusinessTemplates()
+		{
+			var filename = "gunslinger.json";
+			var result = RunGeneratorFromConfig(this, TestContext, filename);
+			Assert.IsTrue(result.Success, result.Message);
+		}
 
-        [TestMethod]
-        public void RunAllEntities()
-        {
-            var filename = "gunslinger.json";
-            var result = RunGeneratorFromConfig(this, TestContext, filename);
-            Assert.IsTrue(result.Success, result.Message);
-        }
+		[TestMethod]
+		public void RunAllEntities()
+		{
+			var filename = "gunslinger.json";
+			var result = RunGeneratorFromConfig(this, TestContext, filename);
+			Assert.IsTrue(result.Success, result.Message);
+		}
 
-        [TestMethod]
-        public void RunAllStubs()
+		[TestMethod]
+		public void RunAllStubs()
 		{
 			var filename = "gunslinger.json";
 			var generatorService = GetService<IGeneratorService>();
@@ -68,6 +66,5 @@ namespace Tests.TemplateSetTests
 			var any = files.Any(a => templates.ExcludeTheseTypes.Contains(a.Name.Replace(".cs", "")));
 			Assert.IsFalse(any);
 		}
-
 	}
 }

@@ -10,7 +10,7 @@
   "DataProviders": [
     {
       "Name": "ModelsDataProvider",
-      "TypeName": "SwaggerDataProvider",      
+      "TypeName": "SwaggerDataProvider",
       "NonSpecifiedPropertiesAreNullable": true,
       "DataSource": "Input\\SwaggerTests\\RunAllTemplates_RenameOneFile\\devapi.swagger.petstore.json"
     }

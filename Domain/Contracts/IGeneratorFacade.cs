@@ -1,13 +1,12 @@
-﻿using Domain.Models;
+﻿using Domain.Models.Configuration;
 using Domain.Models.General;
-using Models;
 
 namespace Contracts
 {
 	public interface IGeneratorService
-    {
-        GenerationContext Context { get; }
+	{
+		GenerationContext Context { get; }
 
-        OperationResult Generate(CommandSettings commandSettings);
-    }
+		OperationResult Generate(CommandSettings commandSettings);
+	}
 }

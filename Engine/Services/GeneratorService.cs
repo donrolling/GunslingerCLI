@@ -1,11 +1,10 @@
 ﻿using Contracts;
-using Domain.Models;
-using Domain.Models.BaseClasses;
 using Domain.Enums;
+using Domain.Models.BaseClasses;
+using Domain.Models.Configuration;
 using Domain.Models.General;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Models;
 
 namespace Engine.Services
 {

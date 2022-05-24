@@ -1,4 +1,4 @@
-﻿namespace Models
+﻿namespace Domain.Models.Configuration
 {
 	public class AppSettings
 	{

@@ -1,7 +1,6 @@
-using Domain.Models;
+using Domain.Models.Configuration;
 using Domain.Models.SQL;
 using Microsoft.SqlServer.Management.Smo;
-
 
 namespace Engine.Factories.SQL
 {

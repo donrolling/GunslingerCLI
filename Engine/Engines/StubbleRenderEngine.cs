@@ -2,7 +2,6 @@
 using Domain.Models.BaseClasses;
 using Domain.Models.General;
 using Microsoft.Extensions.Logging;
-using Domain.Models.BaseClasses;
 using Stubble.Core;
 using Stubble.Core.Builders;
 

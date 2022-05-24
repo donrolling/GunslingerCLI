@@ -1,5 +1,5 @@
 ﻿using Contracts;
-using Domain.Models;
+using Domain.Models.Configuration;
 using Domain.Models.General;
 using Microsoft.Extensions.Logging;
 

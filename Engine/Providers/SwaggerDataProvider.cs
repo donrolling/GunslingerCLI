@@ -1,11 +1,11 @@
 ﻿using Contracts;
 using Domain.Enums;
-using Domain.Models;
+using Domain.Models.BaseClasses;
+using Domain.Models.Configuration;
 using Domain.Models.General;
 using Domain.Models.Settings;
 using Engine.Factories;
 using Microsoft.Extensions.Logging;
-using Domain.Models.BaseClasses;
 using Newtonsoft.Json.Linq;
 using Utilities.IO;
 
@@ -101,7 +101,7 @@ namespace Gunslinger.DataProviders
 		{
 			if (string.IsNullOrEmpty(_dataProviderSettings.DataSource))
 			{
-				return OperationResult.Fail<string>("DataProvider is set to use a network data source, but the path is not specified.");
+				return OperationResult.Fail<string>("Swagger DataSource is not specified.");
 			}
 			// datasource could be an url or a path
 			var isWellFormedUriString = Uri.IsWellFormedUriString(_dataProviderSettings.DataSource, UriKind.Absolute);

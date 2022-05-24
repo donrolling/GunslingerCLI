@@ -1,6 +1,6 @@
 ﻿using Contracts;
-using Domain.Models;
 using Domain.Models.BaseClasses;
+using Domain.Models.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Gunslinger.DataProviders

@@ -21,7 +21,7 @@
     {
       "Type": "Model",
       "Name": "Models",
-      "Namespace": "Idi.Marketplace.Bts..Entities",
+      "Namespace": "Entities",
       "IsStub": false,
       "InputRelativePath": "SwaggerModel.txt",
       "OutputRelativePath": "Models\\{entityName}.cs",

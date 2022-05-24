@@ -1,7 +1,7 @@
 ﻿using Contracts;
 using Domain.Enums;
-using Domain.Models;
 using Domain.Models.BaseClasses;
+using Domain.Models.Configuration;
 using Domain.Models.General;
 using Microsoft.Extensions.Logging;
 
