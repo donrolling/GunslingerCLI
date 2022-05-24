@@ -1,7 +1,6 @@
 ﻿using Microsoft.SqlServer.Management.Smo;
-using Models.Settings;
 
-namespace Models.SQL
+namespace Domain.Models.SQL
 {
 	public class SQLServerInfo
 	{

@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Domain.Enums;
 using Domain.Models;
+using Domain.Models.General;
 using Engine.Models;
 using Gunslinger.Factories;
 using Microsoft.Extensions.Logging;

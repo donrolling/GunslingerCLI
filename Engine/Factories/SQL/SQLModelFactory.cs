@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Domain.Models;
-using Engine.Models.SQL;
+using Domain.Models.SQL;
 using Models;
 using Omu.ValueInjecter;
 
 namespace Gunslinger.Factories.SQL
 {
-    public class SQLModelFactory
+	public class SQLModelFactory
     {
         public static IEnumerable<SQLModel> Create(IEnumerable<SQLTable> sqlTables, GenerationContext generationSettings)
         {

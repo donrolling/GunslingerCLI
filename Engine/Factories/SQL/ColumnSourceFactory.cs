@@ -1,6 +1,6 @@
-﻿using Microsoft.SqlServer.Management.Smo;
+﻿using Domain.Models.SQL;
+using Microsoft.SqlServer.Management.Smo;
 using Models;
-using Models.SQL;
 using Omu.ValueInjecter;
 using Pluralize.NET.Core;
 

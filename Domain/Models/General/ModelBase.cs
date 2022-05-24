@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Domain.Models.General;
+using System.Collections.Generic;
 
 namespace Models
 {
-    public class ModelBase
+	public class ModelBase
     {
         public string Description { get; set; }
         public List<string> Imports { get; set; }

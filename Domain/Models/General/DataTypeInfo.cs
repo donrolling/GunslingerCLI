@@ -1,4 +1,6 @@
-﻿namespace Models
+﻿using Domain.Models.General;
+
+namespace Models
 {
 	public class DataTypeInfo
 	{

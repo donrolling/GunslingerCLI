@@ -1,5 +1,4 @@
-﻿using Models.Settings;
-using Models.SQL;
+﻿using Domain.Models.SQL;
 
 namespace Contracts
 {

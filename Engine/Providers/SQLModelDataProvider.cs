@@ -1,7 +1,7 @@
 ﻿using Contracts;
 using Domain.Enums;
 using Domain.Models;
-using Engine.Models.SQL;
+using Domain.Models.SQL;
 using Gunslinger.Factories.SQL;
 using Microsoft.Extensions.Logging;
 using Microsoft.SqlServer.Management.Smo;

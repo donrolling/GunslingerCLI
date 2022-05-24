@@ -1,6 +1,4 @@
-﻿using Models.SQL;
-
-namespace Engine.Models.SQL
+﻿namespace Domain.Models.SQL
 {
 	public class SQLTable : SQLBasicTable
 	{

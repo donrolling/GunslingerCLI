@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Domain.Models.General;
 using Models;
 
 namespace Engine.Models

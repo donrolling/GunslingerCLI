@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using Contracts;
+using Domain.Models.SQL;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 using Models.BaseClasses;
 using Models.Settings;
-using Models.SQL;
+
 
 namespace Gunslinger.Factories.SQL
 {

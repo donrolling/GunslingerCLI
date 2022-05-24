@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
+using Domain.Models.General;
+using Domain.Models.SQL;
 using Gunslinger.Types;
 using Microsoft.SqlServer.Management.Smo;
 using Models;
-using Models.SQL;
+
 
 namespace Gunslinger.Factories.SQL
 {
-    public class SQLPropertyFactory
+	public class SQLPropertyFactory
     {
         private static List<string> lengthTypes = new List<string> {
             "nvarchar",

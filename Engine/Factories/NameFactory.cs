@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Domain.Models.General;
+using Models;
 using Models.Enums;
 using Pluralize.NET.Core;
 using System.Text.RegularExpressions;
@@ -6,7 +7,7 @@ using Utilities.Extensions;
 
 namespace Gunslinger.Factories
 {
-    public class NameFactory
+	public class NameFactory
     {
         public static Regex rgx = new Regex("[^a-zA-Z0-9 -]");
 

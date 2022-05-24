@@ -1,6 +1,8 @@
-﻿namespace Models.Javascript
+﻿using Domain.Models.General;
+
+namespace Models.Javascript
 {
-    public class JavascriptProperty : Property
+	public class JavascriptProperty : Property
     {
         public string JavascriptDataType { get; set; }
     }

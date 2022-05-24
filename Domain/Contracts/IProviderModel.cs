@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Models;
+using Domain.Models.General;
 
 namespace Contracts
 {
-    public interface IProviderModel
+	public interface IProviderModel
     {
         Name Name { get; set; }
         string Description { get; set; }

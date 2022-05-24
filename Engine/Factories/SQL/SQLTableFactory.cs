@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Engine.Models.SQL;
+using Domain.Models.General;
+using Domain.Models.SQL;
 using Microsoft.SqlServer.Management.Smo;
 using Models;
-using Models.SQL;
+
 using Omu.ValueInjecter;
 
 namespace Gunslinger.Factories.SQL
 {
-    public class SQLTableFactory
+	public class SQLTableFactory
     {
         public static IEnumerable<SQLTable> Create(string @namespace, Models.Enums.Language language, IEnumerable<Table> tables, Template template)
         {

@@ -1,6 +1,8 @@
-﻿namespace Models.SQL
+﻿using Domain.Models.SQL;
+
+namespace Domain.Models.SQL
 {
-    public class SQLForeignKey
+	public class SQLForeignKey
     {
 		public bool IsNullable { get; set; }
 		public ColumnSource Source { get; set; }

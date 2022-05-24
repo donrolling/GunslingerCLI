@@ -1,4 +1,6 @@
-﻿namespace Models.SQL
+﻿using Domain.Models.General;
+
+namespace Domain.Models.SQL
 {
 	public class SQLKey
 	{
