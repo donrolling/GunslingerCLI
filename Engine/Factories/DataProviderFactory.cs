@@ -1,11 +1,11 @@
 ﻿using Contracts;
+using Domain.Models.BaseClasses;
 using Domain.Models.Settings;
 using Gunslinger.DataProviders;
 using Microsoft.Extensions.Logging;
-using Models.BaseClasses;
 using Newtonsoft.Json;
 
-namespace Gunslinger.Factories
+namespace Engine.Factories
 {
 	public class DataProviderFactory : LoggingWorker, IDataProviderFactory
 	{

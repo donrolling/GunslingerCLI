@@ -5,7 +5,7 @@ using Domain.Models.SQL;
 using Models;
 using Omu.ValueInjecter;
 
-namespace Gunslinger.Factories.SQL
+namespace Engine.Factories.SQL
 {
 	public class SQLModelFactory
     {

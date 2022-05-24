@@ -1,9 +1,9 @@
 ﻿using Contracts;
 using Domain.Enums;
 using Domain.Models;
+using Domain.Models.BaseClasses;
 using Domain.Models.General;
 using Microsoft.Extensions.Logging;
-using Models.BaseClasses;
 
 namespace Engine.Services
 {

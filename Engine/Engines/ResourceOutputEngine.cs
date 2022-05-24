@@ -3,7 +3,7 @@ using Domain.Models;
 using Domain.Models.General;
 using Microsoft.Extensions.Logging;
 
-namespace Gunslinger.Engines
+namespace Engine.Engines
 {
 	public class ResourceOutputEngine : IResourceOutputEngine
 	{
@@ -12,8 +12,8 @@ namespace Gunslinger.Engines
 
 		public ResourceOutputEngine(ITemplateOutputEngine templateOutputEngine, ILoggerFactory loggerFactory)
 		{
-			this._templateOutputEngine = templateOutputEngine;
-			this._logger = loggerFactory.CreateLogger(this.GetType().Name);
+			_templateOutputEngine = templateOutputEngine;
+			_logger = loggerFactory.CreateLogger(GetType().Name);
 		}
 
 		public OperationResult Write(GenerationContext settings)
@@ -57,7 +57,7 @@ namespace Gunslinger.Engines
 					File.Copy(sourcePath, destinationPath, true);
 				}
 			}
-			catch (System.Exception ex)
+			catch (Exception ex)
 			{
 				return OperationResult.Fail(ex.Message);
 			}

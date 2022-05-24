@@ -1,5 +1,5 @@
-﻿using Models;
-using Models.Enums;
+﻿using Domain.Enums;
+using Models;
 
 namespace Domain.Models.General
 {
@@ -10,7 +10,7 @@ namespace Domain.Models.General
 		public bool DeleteAllItemsInOutputDirectory { get; set; } = true;
 		public List<string> Imports { get; set; } = new List<string>();
 		public bool IsStub { get; set; }
-		public Language Language { get; set; }
+		public ProgrammingLanguage Language { get; set; }
 		public string Name { get; set; }
 		public string Namespace { get; set; }
 		public string InputRelativePath { get; set; }

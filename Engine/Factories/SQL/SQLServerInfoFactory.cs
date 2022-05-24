@@ -1,12 +1,12 @@
 ﻿using Contracts;
+using Domain.Models.BaseClasses;
 using Domain.Models.SQL;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
-using Models.BaseClasses;
 
-namespace Gunslinger.Factories.SQL
+namespace Engine.Factories.SQL
 {
 	public class SQLServerInfoFactory : LoggingWorker, ISQLServerInfoFactory
 	{

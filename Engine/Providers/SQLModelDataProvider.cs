@@ -1,13 +1,13 @@
 ﻿using Contracts;
 using Domain.Enums;
 using Domain.Models;
+using Domain.Models.BaseClasses;
 using Domain.Models.General;
 using Domain.Models.Settings;
 using Domain.Models.SQL;
-using Gunslinger.Factories.SQL;
+using Engine.Factories.SQL;
 using Microsoft.Extensions.Logging;
 using Microsoft.SqlServer.Management.Smo;
-using Models.BaseClasses;
 
 namespace Gunslinger.DataProviders
 {
@@ -32,8 +32,8 @@ namespace Gunslinger.DataProviders
 		}
 
 		public SQLModelDataProvider(
-			ISQLServerInfoFactory sqlServerInfoFactory, 
-			SQLDataProviderSettings dataProvider, 
+			ISQLServerInfoFactory sqlServerInfoFactory,
+			SQLDataProviderSettings dataProvider,
 			ILoggerFactory loggerFactory
 		) : base(loggerFactory)
 		{
@@ -42,9 +42,9 @@ namespace Gunslinger.DataProviders
 		}
 
 		public OperationResult<Dictionary<string, IProviderModel>> Get(
-			GenerationContext context, 
-			Template template, 
-			List<string> includeTheseEntitiesOnly, 
+			GenerationContext context,
+			Template template,
+			List<string> includeTheseEntitiesOnly,
 			List<string> excludeTheseEntities
 		)
 		{

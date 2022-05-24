@@ -1,4 +1,4 @@
-﻿namespace Models.Constants
+﻿namespace Domain.Constants
 {
 	public class ConfigKeys
 	{

@@ -4,7 +4,7 @@ using Microsoft.SqlServer.Management.Smo;
 using Omu.ValueInjecter;
 using Pluralize.NET.Core;
 
-namespace Gunslinger.Factories.SQL
+namespace Engine.Factories.SQL
 {
 	public class ColumnSourceFactory
 	{

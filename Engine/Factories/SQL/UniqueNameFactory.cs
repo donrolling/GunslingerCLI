@@ -1,4 +1,4 @@
-﻿namespace Gunslinger.Factories.SQL
+﻿namespace Engine.Factories.SQL
 {
 	public class UniqueNameFactory
 	{

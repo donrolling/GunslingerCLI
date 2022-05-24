@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Models.BaseClasses
+namespace Domain.Models.BaseClasses
 {
     public abstract class LoggingWorker
     {

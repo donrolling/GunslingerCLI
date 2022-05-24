@@ -1,4 +1,4 @@
-﻿namespace Models.Enums
+﻿namespace Domain.Enums
 {
     public enum StatusDetail
     {

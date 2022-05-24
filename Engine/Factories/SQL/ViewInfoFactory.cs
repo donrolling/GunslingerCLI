@@ -3,7 +3,7 @@ using Domain.Models.SQL;
 using Microsoft.SqlServer.Management.Smo;
 
 
-namespace Gunslinger.Factories.SQL
+namespace Engine.Factories.SQL
 {
 	public class ViewInfoFactory
 	{

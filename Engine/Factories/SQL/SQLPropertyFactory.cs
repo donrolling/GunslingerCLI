@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using Domain.Enums;
 using Domain.Models.General;
 using Domain.Models.SQL;
 using Gunslinger.Types;
 using Microsoft.SqlServer.Management.Smo;
 
 
-namespace Gunslinger.Factories.SQL
+namespace Engine.Factories.SQL
 {
 	public class SQLPropertyFactory
     {
@@ -30,7 +31,7 @@ namespace Gunslinger.Factories.SQL
             "varbinarymax"
         };
 
-        public static SQLColumn Create(Name modelName, Column column, Models.Enums.Language language, Template template)
+        public static SQLColumn Create(Name modelName, Column column, ProgrammingLanguage language, Template template)
         {
             var property = new SQLColumn
             {
@@ -40,7 +41,7 @@ namespace Gunslinger.Factories.SQL
                 Nullable = column.Nullable,
                 PrimaryKey = column.InPrimaryKey,
                 SqlDataTypeEnum = column.DataType.SqlDataType,
-                SqlDataType = getDataType(Models.Enums.Language.sql, column.DataType.SqlDataType, column.DataType.MaximumLength),
+                SqlDataType = getDataType(ProgrammingLanguage.sql, column.DataType.SqlDataType, column.DataType.MaximumLength),
                 Type = getDataType(language, column.DataType.SqlDataType, 0),
                 IsInPrimaryKey = column.InPrimaryKey,
                 IsForeignKey = column.IsForeignKey,
@@ -49,14 +50,14 @@ namespace Gunslinger.Factories.SQL
             return property;
         }
 
-        private static string getDataType(Models.Enums.Language language, SqlDataType sqlDataType, int maximumLength)
+        private static string getDataType(ProgrammingLanguage language, SqlDataType sqlDataType, int maximumLength)
         {
             switch (language)
             {
-                case Models.Enums.Language.csharp:
+                case ProgrammingLanguage.csharp:
                     return SQLDataTypeConversion.ConvertTo_CSDataType(sqlDataType, false);
 
-                case Models.Enums.Language.sql:
+                case ProgrammingLanguage.sql:
                     var baseType = sqlDataType.ToString().ToLower();
                     if (maxTypes.Contains(baseType))
                     {

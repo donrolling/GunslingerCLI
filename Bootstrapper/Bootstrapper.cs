@@ -1,15 +1,14 @@
 ﻿using Contracts;
+using Domain.Constants;
 using Engine.Engines;
+using Engine.Factories;
+using Engine.Factories.SQL;
 using Engine.Services;
 using Gunslinger.DataProviders;
-using Gunslinger.Engines;
-using Gunslinger.Factories;
-using Gunslinger.Factories.SQL;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Models;
-using Models.Constants;
 using Serilog;
 
 namespace Bootstrapper

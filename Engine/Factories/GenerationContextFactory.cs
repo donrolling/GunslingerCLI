@@ -1,16 +1,15 @@
 ﻿using Contracts;
 using Domain.Enums;
 using Domain.Models;
+using Domain.Models.BaseClasses;
 using Domain.Models.General;
 using Domain.Models.Settings;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Models;
-using Models.BaseClasses;
-using Omu.ValueInjecter;
 using Utilities.IO;
 
-namespace Gunslinger.Factories
+namespace Engine.Factories
 {
 	public class GenerationContextFactory : LoggingWorker, IContextFactory
 	{
@@ -38,7 +37,8 @@ namespace Gunslinger.Factories
 				return OperationResult.Fail<GenerationContext>(msg, Status.Cancelled);
 			}
 			var generationContextJSON = generationContextReadResult.Result;
-			var generationContext = new GenerationContext {
+			var generationContext = new GenerationContext
+			{
 				AuditProperties = generationContextJSON.AuditProperties,
 				ExcludeTheseEntities = generationContextJSON.ExcludeTheseEntities,
 				ExcludeTheseTemplates = generationContextJSON.ExcludeTheseTemplates,
