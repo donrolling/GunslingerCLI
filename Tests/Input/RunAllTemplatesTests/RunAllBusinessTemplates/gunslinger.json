@@ -11,9 +11,7 @@
   "DataProviders": [
     {
       "Name": "SQLModelsDataProvider",
-      "TypeName": "SQLModelDataProvider",
-      "UseLocalDataSource": false,
-      "LocalDataSource": "",
+      "TypeName": "SQLModelDataProvider",      
       "DataSource": "Server=localhost,1433;Database=Sample;User Id=sa;Password=yourStrong(!)Password;"
     }
   ],

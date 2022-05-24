@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Domain.Enums;
 using Domain.Models;
 using Engine.Models;
 using Gunslinger.Factories;
@@ -20,25 +21,21 @@ namespace Gunslinger.DataProviders
 		public bool NonSpecifiedPropertiesAreNullable
 		{
 			get { return _dataProviderSettings.NonSpecifiedPropertiesAreNullable; }
-			set { _dataProviderSettings.NonSpecifiedPropertiesAreNullable = value; }
 		}
 
 		public string DataSource
 		{
 			get { return _dataProviderSettings.DataSource; }
-			set { _dataProviderSettings.DataSource = value; }
 		}
 
 		public string Name
 		{
 			get { return _dataProviderSettings.Name; }
-			set { _dataProviderSettings.Name = value; }
 		}
 
-		public string TypeName
+		public DataProviderTypes TypeName
 		{
 			get { return _dataProviderSettings.TypeName; }
-			set { _dataProviderSettings.TypeName = value; }
 		}
 
 		public SwaggerDataProvider(SwaggerDataProviderSettings swaggerDataProviderSettings, ILoggerFactory loggerFactory) : base(loggerFactory)

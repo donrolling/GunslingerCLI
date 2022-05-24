@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Domain.Enums;
 using Domain.Models;
 using Engine.Models.SQL;
 using Gunslinger.Factories.SQL;
@@ -15,31 +16,37 @@ namespace Gunslinger.DataProviders
 		private readonly SQLDataProviderSettings _dataProviderSettings;
 		private readonly ISQLServerInfoFactory _sqlServerInfoFactory;
 
+		public DataProviderTypes TypeName
+		{
+			get { return _dataProviderSettings.TypeName; }
+		}
+
 		public string DataSource
 		{
 			get { return _dataProviderSettings.DataSource; }
-			set { _dataProviderSettings.DataSource = value; }
 		}
 
 		public string Name
 		{
 			get { return _dataProviderSettings.Name; }
-			set { _dataProviderSettings.Name = value; }
 		}
 
-		public string TypeName
-		{
-			get { return _dataProviderSettings.TypeName; }
-			set { _dataProviderSettings.TypeName = value; }
-		}
-
-		public SQLModelDataProvider(ISQLServerInfoFactory sqlServerInfoFactory, SQLDataProviderSettings dataProvider, ILoggerFactory loggerFactory) : base(loggerFactory)
+		public SQLModelDataProvider(
+			ISQLServerInfoFactory sqlServerInfoFactory, 
+			SQLDataProviderSettings dataProvider, 
+			ILoggerFactory loggerFactory
+		) : base(loggerFactory)
 		{
 			_dataProviderSettings = dataProvider;
 			_sqlServerInfoFactory = sqlServerInfoFactory;
 		}
 
-		public OperationResult<Dictionary<string, IProviderModel>> Get(GenerationContext context, Template template, List<string> includeTheseEntitiesOnly, List<string> excludeTheseEntities)
+		public OperationResult<Dictionary<string, IProviderModel>> Get(
+			GenerationContext context, 
+			Template template, 
+			List<string> includeTheseEntitiesOnly, 
+			List<string> excludeTheseEntities
+		)
 		{
 			try
 			{

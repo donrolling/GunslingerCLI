@@ -1,12 +1,11 @@
-﻿using Contracts;
-using Models;
+﻿using Models;
 
 namespace Domain.Models
 {
-	public class GenerationContext
+	public class GenerationContextJSON
 	{
 		public List<string> AuditProperties { get; set; } = new List<string>();
-		public List<IDataProvider> DataProviders { get; set; } = new List<IDataProvider>();
+		public List<dynamic> DataProviders { get; set; } = new List<dynamic>();
 		public List<string> ExcludeTheseEntities { get; set; } = new List<string>();
 		public List<string> ExcludeTheseTemplates { get; set; } = new List<string>();
 		public List<string> IncludeTheseEntitiesOnly { get; set; } = new List<string>();
@@ -14,7 +13,6 @@ namespace Domain.Models
 		public string OutputDirectory { get; set; }
 		public bool ProcessTemplateStubs { get; set; } = true;
 		public List<Resource> Resources { get; set; }
-		public string RootPath { get; set; }
 		public string TemplateDirectory { get; set; }
 		public List<Template> Templates { get; set; } = new List<Template>();
 	}
