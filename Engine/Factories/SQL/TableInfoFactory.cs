@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Domain.Models;
 using Microsoft.SqlServer.Management.Smo;
 using Models;
 using Models.SQL;

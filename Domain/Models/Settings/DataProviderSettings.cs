@@ -1,9 +1,11 @@
 ﻿namespace Models.Settings
 {
-	public class DataProviderSettings
+	public class DataProviderSettings 
 	{
-		public string Name { get; set; }
-		public string TypeName { get; set; }
 		public string DataSource { get; set; }
+		
+		public string Name { get; set; }
+		
+		public string TypeName { get; set; }
 	}
 }

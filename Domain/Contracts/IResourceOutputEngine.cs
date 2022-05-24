@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Domain.Models;
+using Models;
 
 namespace Contracts
 {

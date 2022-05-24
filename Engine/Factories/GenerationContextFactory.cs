@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Domain.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Models;
@@ -34,13 +35,24 @@ namespace Gunslinger.Factories
                 return OperationResult.Fail<GenerationContext>(msg, Status.Cancelled);
             }
             var generationContext = generationContextReadResult.Result;
-            var path = Directory.GetCurrentDirectory();
+            generationContext.RootPath = commandSettings.RootPath;
             // if the user set TemplateDirectory to a full path, then nothing needs to happen
             // but we need the full path, so append the current directory to the relative path
             if (!generationContext.TemplateDirectory.Contains(":\\"))
             {
-                generationContext.TemplateDirectory = $"{path}\\{generationContext.TemplateDirectory}";
+                generationContext.TemplateDirectory = $"{commandSettings.RootPath}\\{generationContext.TemplateDirectory}";
             }
+            if (!generationContext.OutputDirectory.Contains(":\\"))
+            {
+                generationContext.OutputDirectory = $"{commandSettings.RootPath}\\{generationContext.OutputDirectory}";
+            }
+			foreach (var dataProvider in generationContext.DataProviders)
+			{
+				//if (dataProvider.)
+				//{
+
+				//}
+			}
             // read the template text for all of the templates
             foreach (var template in generationContext.Templates)
             {

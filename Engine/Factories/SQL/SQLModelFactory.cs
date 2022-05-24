@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Domain.Models;
 using Engine.Models.SQL;
 using Models;
 using Omu.ValueInjecter;

@@ -227,7 +227,7 @@ namespace Utilities.IO
 			var output = new FileStream(path.filePath, FileMode.Create);
 			contents.CopyTo(output);
 		}
-		
+
 		/// <summary>
 		/// Writes a stream to a file. Checks that the directory exists first.
 		/// </summary>

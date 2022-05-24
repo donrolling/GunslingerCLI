@@ -1,8 +1,9 @@
-﻿using Models;
+﻿using Domain.Models;
+using Models;
 
 namespace Contracts
 {
-    public interface IContextFactory
+	public interface IContextFactory
     {
         OperationResult<GenerationContext> Create(CommandSettings commandSettings);
     }
