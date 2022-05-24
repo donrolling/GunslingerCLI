@@ -41,9 +41,9 @@ namespace Engine.Factories
 
 				case Domain.Enums.DataProviderTypes.SQLDataProvider:
 					var sqlDataProviderSettings = JsonConvert.DeserializeObject<SQLDataProviderSettings>(JsonConvert.SerializeObject(dataProviderSettings));
-					var sqlModelDataProvider = new SQLModelDataProvider(_sqlServerInfoFactory, sqlDataProviderSettings, _loggerFactory);
-					_dataProviderDictionary.Add(sqlDataProviderSettings.Name, sqlModelDataProvider);
-					return sqlModelDataProvider;
+					var SQLDataProvider = new SQLDataProvider(_sqlServerInfoFactory, sqlDataProviderSettings, _loggerFactory);
+					_dataProviderDictionary.Add(sqlDataProviderSettings.Name, SQLDataProvider);
+					return SQLDataProvider;
 
 				default:
 					var msg = $"Create() - Name not matched: {dataProviderSettings.TypeName}";

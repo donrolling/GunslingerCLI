@@ -6,6 +6,7 @@ namespace Domain.Models.Configuration
 	public class GenerationContext
 	{
 		public List<string> AuditProperties { get; set; } = new List<string>();
+		public string ConfigPath { get; set; }
 		public List<IDataProviderSettings> DataProviders { get; set; } = new List<IDataProviderSettings>();
 		public List<string> ExcludeTheseEntities { get; set; } = new List<string>();
 		public List<string> ExcludeTheseTemplates { get; set; } = new List<string>();

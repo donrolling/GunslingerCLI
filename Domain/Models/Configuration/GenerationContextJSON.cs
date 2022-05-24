@@ -5,6 +5,7 @@ namespace Domain.Models.Configuration
 	public class GenerationContextJSON
 	{
 		public List<string> AuditProperties { get; set; } = new List<string>();
+		public string ConfigPath { get; set; }
 		public List<dynamic> DataProviders { get; set; } = new List<dynamic>();
 		public List<string> ExcludeTheseEntities { get; set; } = new List<string>();
 		public List<string> ExcludeTheseTemplates { get; set; } = new List<string>();

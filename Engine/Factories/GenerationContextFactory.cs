@@ -36,9 +36,11 @@ namespace Engine.Factories
 				return OperationResult.Fail<GenerationContext>(msg, Status.Cancelled);
 			}
 			var generationContextJSON = generationContextReadResult.Result;
+			generationContextJSON.ConfigPath = configPath;
 			var generationContext = new GenerationContext
 			{
 				AuditProperties = generationContextJSON.AuditProperties,
+				ConfigPath = generationContextJSON.ConfigPath,
 				ExcludeTheseEntities = generationContextJSON.ExcludeTheseEntities,
 				ExcludeTheseTemplates = generationContextJSON.ExcludeTheseTemplates,
 				IncludeTheseEntitiesOnly = generationContextJSON.IncludeTheseEntitiesOnly,
@@ -104,7 +106,7 @@ namespace Engine.Factories
 				}
 				else
 				{
-					throw new Exception($"Could not properly type the DataProviderType for '{dataProvider["Name"]}'");
+					throw new Exception($"Could not properly type the DataProviderType for '{dataProvider["Name"]}'{Environment.NewLine}ConfigPath: {generationContextJSON.ConfigPath}");
 				}
 			}
 		}
@@ -115,8 +117,11 @@ namespace Engine.Factories
 			sqlDataProviderSettings.TypeName = DataProviderTypes.SQLDataProvider;
 			sqlDataProviderSettings.DataSource = dataProvider[nameof(SQLDataProviderSettings.DataSource)].ToString();
 			sqlDataProviderSettings.Name = dataProvider[nameof(SQLDataProviderSettings.Name)].ToString();
-			var generateViews = bool.Parse(dataProvider[nameof(SQLDataProviderSettings.GenerateViews)].ToString().ToLower());
-			sqlDataProviderSettings.GenerateViews = generateViews;
+			if (dataProvider[nameof(SQLDataProviderSettings.GenerateViews)] != null)
+			{
+				var generateViews = bool.Parse(dataProvider[nameof(SQLDataProviderSettings.GenerateViews)].ToString().ToLower());
+				sqlDataProviderSettings.GenerateViews = generateViews;
+			}
 			return sqlDataProviderSettings;
 		}
 

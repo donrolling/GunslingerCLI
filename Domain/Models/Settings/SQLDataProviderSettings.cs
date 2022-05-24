@@ -2,6 +2,6 @@
 {
 	public class SQLDataProviderSettings : DataProviderSettings
 	{
-		public bool GenerateViews { get; set; }
+		public bool GenerateViews { get; set; } = false;
 	}
 }
