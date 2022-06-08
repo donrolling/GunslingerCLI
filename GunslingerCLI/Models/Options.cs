@@ -21,5 +21,8 @@ namespace GunslingerCLI.Models
 				};
 			}
 		}
+
+		[Option('v', "version", HelpText = "Prints version information to standard output.")]
+		public bool Version { get; set; }
 	}
 }

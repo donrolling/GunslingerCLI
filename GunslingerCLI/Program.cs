@@ -7,6 +7,8 @@ using GunslingerCLI.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System.Diagnostics;
+using System.Reflection;
 
 var host = Bootstrapper.Configuration.ConfigureServices(AppDomain.CurrentDomain.BaseDirectory);
 using (var scope = host.Services.CreateScope())
@@ -15,6 +17,8 @@ using (var scope = host.Services.CreateScope())
 	var logger = services.GetRequiredService<ILogger<Program>>();
 	var generatorService = services.GetRequiredService<IGeneratorService>();
 	var commandSettingsResult = GetOptions(args, logger);
+
+	//if (commandSettingsResult.Result.Version) Console.WriteLine("Version: {0}", GetVersion());
 
 	if (commandSettingsResult.Failed)
 	{
@@ -43,6 +47,7 @@ using (var scope = host.Services.CreateScope())
 
 static OperationResult<CommandSettings> GetOptions(string[] args, ILogger logger)
 {
+	var productVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion; 
 	var options = Parser.Default.ParseArguments<Options>(args);
 	if (options.Errors.Any())
 	{
