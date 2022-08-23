@@ -11,7 +11,7 @@ using Microsoft.SqlServer.Management.Smo;
 
 namespace Gunslinger.DataProviders
 {
-	public class SQLDataProvider : LoggingWorker, IDataProvider
+	public class SQLProcDataProvider : LoggingWorker, IDataProvider
 	{
 		private readonly SQLDataProviderSettings _dataProviderSettings;
 		private readonly ISQLServerInfoFactory _sqlServerInfoFactory;
@@ -31,7 +31,7 @@ namespace Gunslinger.DataProviders
 			get { return _dataProviderSettings.Name; }
 		}
 
-		public SQLDataProvider(
+		public SQLProcDataProvider(
 			ISQLServerInfoFactory sqlServerInfoFactory,
 			SQLDataProviderSettings dataProvider,
 			ILoggerFactory loggerFactory

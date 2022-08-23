@@ -1,0 +1,32 @@
+{
+	"OutputDirectory": "Output\\StoredProcInquiryTests\\Run",
+	"ProcessTemplateStubs": false,
+	"TemplateDirectory": "Templates",
+	"ExcludeTheseEntities": [ "Item" ],
+	"ExcludeTheseTemplates": [],
+	"IncludeTheseEntitiesOnly": [],
+	"IncludeTheseTemplatesOnly": [],
+	"Resources": [
+	],
+	"DataProviders": [
+		{
+			"Name": "SQLProcsDataProvider",
+			"TypeName": "SQLProcsDataProvider",
+			"DataSource": "data source=devsql.caliberfs.com;initial catalog=OLPS;User ID=OLPSUser;Password=0lp$2009;MultipleActiveResultSets=True;App=EntityFramework;Encrypt=False"
+		}
+	],
+	"Templates": [
+		{
+			"Type": "Model",
+			"Name": "StoredProcRepository",
+			"Namespace": "Test",
+			"IsStub": false,
+			"InputRelativePath": "StoredProcRepository.txt",
+			"OutputRelativePath": "Services\\{entityName}.cs",
+			"Language": "csharp",
+			"DataProviderName": "SQLProcsDataProvider",
+			"Imports": [
+			]
+		}
+	]
+}
