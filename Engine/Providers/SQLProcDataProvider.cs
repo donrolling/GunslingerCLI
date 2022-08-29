@@ -4,10 +4,8 @@ using Domain.Models.BaseClasses;
 using Domain.Models.Configuration;
 using Domain.Models.General;
 using Domain.Models.Settings;
-using Domain.Models.SQL;
 using Engine.Factories.SQL;
 using Microsoft.Extensions.Logging;
-using Microsoft.SqlServer.Management.Smo;
 
 namespace Gunslinger.DataProviders
 {
@@ -33,11 +31,11 @@ namespace Gunslinger.DataProviders
 
 		public SQLProcDataProvider(
 			ISQLServerInfoFactory sqlServerInfoFactory,
-			SQLDataProviderSettings dataProvider,
+			SQLDataProviderSettings dataProviderSettings,
 			ILoggerFactory loggerFactory
 		) : base(loggerFactory)
 		{
-			_dataProviderSettings = dataProvider;
+			_dataProviderSettings = dataProviderSettings;
 			_sqlServerInfoFactory = sqlServerInfoFactory;
 		}
 
@@ -52,19 +50,12 @@ namespace Gunslinger.DataProviders
 			{
 				//this call won't recreate the SQLServerInfo over multiple calls
 				var sqlServerInfo = _sqlServerInfoFactory.Create(_dataProviderSettings.Name, _dataProviderSettings.DataSource);
-				var smoTables = TableInfoFactory.Create(sqlServerInfo, context, includeTheseEntitiesOnly, excludeTheseEntities);
-				var gunslingerTables = SQLTableFactory.Create(template.Namespace, template.Language, smoTables, template);
-				var smoViews = _dataProviderSettings.GenerateViews
-					? ViewInfoFactory.Create(sqlServerInfo, context, includeTheseEntitiesOnly, excludeTheseEntities)
-					: new List<View>();
-				var gunslingerViews = _dataProviderSettings.GenerateViews
-					? SQLViewFactory.Create(template.Namespace, template.Language, smoViews, template)
-					: new List<SQLView>();
+				var smoProcs = ProcInfoFactory.Create(sqlServerInfo, context, includeTheseEntitiesOnly, excludeTheseEntities);
+				var gunslingerProcs = SQLProcFactory.Create(template.Namespace, template.Language, smoProcs, template);
 				var providerModels = new Dictionary<string, IProviderModel>();
-				foreach (var gunslingerTable in gunslingerTables)
+				foreach (var gunslingerProc in gunslingerProcs)
 				{
-					var sqlModel = SQLModelFactory.Create(gunslingerTable, context);
-					providerModels.Add(gunslingerTable.UniqueName, sqlModel);
+					providerModels.Add(gunslingerProc.UniqueName, gunslingerProc);
 				}
 				return OperationResult.Ok(providerModels);
 			}
