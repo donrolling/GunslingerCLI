@@ -15,7 +15,7 @@ namespace Engine.Factories.SQL
 			return new SQLKey
 			{
 				Name = name,
-				IsNullable = sqlColumn.Nullable,
+				IsNullable = sqlColumn.IsNullable,
 				SQLDataType = sqlColumn.SqlDataTypeEnum.ToString(),
 				DataType = dataType,
 				DbType = dbType

@@ -1,0 +1,32 @@
+{
+	"OutputDirectory": "Output\\StoredProcInquiryTests\\Run",
+	"ProcessTemplateStubs": false,
+	"TemplateDirectory": "Templates",
+	"ExcludeTheseEntities": [ "Item" ],
+	"ExcludeTheseTemplates": [],
+	"IncludeTheseEntitiesOnly": [],
+	"IncludeTheseTemplatesOnly": [],
+	"Resources": [
+	],
+	"DataProviders": [
+		{
+			"Name": "SQLProcsDataProvider",
+			"TypeName": "SQLProcsDataProvider",
+			"DataSource": ""
+		}
+	],
+	"Templates": [
+		{
+			"Type": "Model",
+			"Name": "StoredProcRepository",
+			"Namespace": "Test",
+			"IsStub": false,
+			"InputRelativePath": "StoredProcRepository.txt",
+			"OutputRelativePath": "Services\\{entityName}.cs",
+			"Language": "csharp",
+			"DataProviderName": "SQLProcsDataProvider",
+			"Imports": [
+			]
+		}
+	]
+}
