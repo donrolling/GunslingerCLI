@@ -3,7 +3,6 @@
 	public enum DataProviderTypes
 	{
 		SQLDataProvider,
-		SQLProcsDataProvider,
 		SwaggerDataProvider
 	}
 }

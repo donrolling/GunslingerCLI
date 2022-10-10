@@ -46,7 +46,6 @@ namespace Engine.Factories.SQL
 				ServerName = builder.DataSource,
 			};
 			sqlServerInfo.Database = new Database(server, sqlServerInfo.DatabaseName);
-			sqlServerInfo.Database.Refresh();
 
 			//add it to the list
 			_sqlServerInfo.Add(name, sqlServerInfo);

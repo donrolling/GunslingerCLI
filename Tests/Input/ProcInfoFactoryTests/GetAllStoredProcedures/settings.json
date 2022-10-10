@@ -1,3 +1,0 @@
-{
-	"ConnectionString": "data source=devsql.caliberfs.com;initial catalog=OLPS;User ID=OLPSUser;Password=0lp$2009;MultipleActiveResultSets=True;App=EntityFramework;Encrypt=False"
-}

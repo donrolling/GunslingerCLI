@@ -52,6 +52,7 @@ namespace Gunslinger.DataProviders
 			{
 				//this call won't recreate the SQLServerInfo over multiple calls
 				var sqlServerInfo = _sqlServerInfoFactory.Create(_dataProviderSettings.Name, _dataProviderSettings.DataSource);
+				sqlServerInfo.Database.Refresh();
 				var smoTables = TableInfoFactory.Create(sqlServerInfo, context, includeTheseEntitiesOnly, excludeTheseEntities);
 				var gunslingerTables = SQLTableFactory.Create(template.Namespace, template.Language, smoTables, template);
 				var smoViews = _dataProviderSettings.GenerateViews

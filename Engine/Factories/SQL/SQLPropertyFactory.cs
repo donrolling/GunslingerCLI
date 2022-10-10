@@ -36,7 +36,7 @@ namespace Engine.Factories.SQL
 				DefaultValue = column.DefaultConstraint?.Text,
 				Length = column.DataType.MaximumLength,
 				Name = NameFactory.Create(column.Name, template, false),
-				IsNullable = column.Nullable,
+				Nullable = column.Nullable,
 				PrimaryKey = column.InPrimaryKey,
 				SqlDataTypeEnum = column.DataType.SqlDataType,
 				SqlDataType = getDataType(ProgrammingLanguage.sql, column.DataType.SqlDataType, column.DataType.MaximumLength),

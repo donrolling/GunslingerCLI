@@ -97,7 +97,6 @@ namespace Engine.Factories
 						switch (dataProviderType)
 						{
 							case DataProviderTypes.SQLDataProvider:
-							case DataProviderTypes.SQLProcsDataProvider:
 								var sqlDataProvider = ConfigureSQLDataProvider(dataProvider);
 								generationContext.DataProviders.Add(sqlDataProvider);
 								break;

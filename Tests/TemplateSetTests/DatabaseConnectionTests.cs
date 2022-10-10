@@ -19,6 +19,7 @@ namespace Tests.TemplateSetTests
 			var testConnection = TestContext.ReadJSON<TestConnection>("settings.json");
 			var sqlServerInfoFactory = this.GetService<ISQLServerInfoFactory>();
 			var sqlServerInfo = sqlServerInfoFactory.Create("Test", testConnection.ConnectionString);
+			sqlServerInfo.Database.Refresh();
 			Assert.IsTrue(sqlServerInfo.Database.Tables.Count > 0, "Table count was zero.");
 		}
 
@@ -28,6 +29,7 @@ namespace Tests.TemplateSetTests
 			var testConnection = TestContext.ReadJSON<TestConnection>("settings.json");
 			var sqlServerInfoFactory = this.GetService<ISQLServerInfoFactory>();
 			var sqlServerInfo = sqlServerInfoFactory.Create("Test", testConnection.ConnectionString);
+			sqlServerInfo.Database.Refresh();
 			Assert.IsTrue(sqlServerInfo.Database.Tables.Count > 0, "Table count was zero.");
 		}
 	}
